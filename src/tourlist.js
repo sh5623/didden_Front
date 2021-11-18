@@ -1,19 +1,19 @@
 import React from 'react';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const NumList = props => {
-  return props.nums.map((num, index) => (
+const TourList = props => {
+  return props.tours.map((tour, index) => (
     <TouchableOpacity
-      style={styles.numList}
+      style={styles.tourList}
       key={index}
-      onPress={() => props.delete(index)}>
-      <Text>{num}</Text>
+      onPress={() => props.view(tour)}>
+      <Text>{tour.정보명}</Text>
     </TouchableOpacity>
   ));
 };
 
 const styles = StyleSheet.create({
-  numList: {
+  tourList: {
     backgroundColor: '#cecece',
     marginTop: 10,
     alignItems: 'center',
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NumList;
+export default TourList;

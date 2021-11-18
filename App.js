@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, Alert} from 'react-native';
 import PropsChild from './propsChild';
 import Header from './src/header';
 import Generator from './src/generator';
+import GeneratorTour from './src/generatorTour';
 import NumList from './src/numlist';
+import TourList from './src/tourlist';
+import Input from './src/input';
 import axios from 'axios';
 
 class App extends Component {
@@ -13,6 +16,8 @@ class App extends Component {
     sampleNum: 1,
     appName: 'didden',
     random: [],
+    tours: [],
+    tourNum: 0,
   };
 
   inputText = () =>
@@ -69,6 +74,37 @@ class App extends Component {
     this.setState({random: newArray});
   };
 
+  onAddTours = async () => {
+    await axios
+      .get('http://146.56.174.150:8080/user/test')
+      .then(response => {
+        if (this.state.tourNum > 9) {
+          alert(`모든 Tour 정보를 갖고 왔습니다.`);
+          return;
+        } else {
+          this.setState(current => ({
+            tours: [...current.tours, response.data.data[this.state.tourNum]],
+            tourNum: current.tourNum + 1,
+          }));
+        }
+      })
+      .catch(error => {
+        alert(`Fail : ${error.message}`);
+      });
+  };
+
+  onDetailView = tourDetail => {
+    Alert.alert(
+      `didden`,
+      `지역 : ${tourDetail.지역}
+    주소 : ${tourDetail.주소}
+    문의및안내 : ${tourDetail.문의및안내}
+    대분류 : ${tourDetail.대분류}
+    중분류 : ${tourDetail.중분류}
+    소분류 : ${tourDetail.소분류}`,
+    );
+  };
+
   render() {
     return (
       <View style={styles.background}>
@@ -82,8 +118,27 @@ class App extends Component {
             changeState={this.changeState}
           />
         </View>
-        <Generator add={this.onAddRandomNum} />
-        <NumList nums={this.state.random} delete={this.onNumDelete} />
+        <ScrollView style={{width: '100%'}}>
+          <Generator add={this.onAddRandomNum} />
+          <ScrollView
+            style={{width: '100%', maxHeight: 300}}
+            //onMomentumScrollBegin={() => alert('begin')}
+            //onMomentumScrollEnd={() => alert('end')}
+            //onScroll={() => alert('scrolling')}
+            /* onContentSizeChange={(width, height) =>
+            alert(`width: ${width}, height: ${height}`)
+          } */
+            bounces={true}>
+            <NumList nums={this.state.random} delete={this.onNumDelete} />
+          </ScrollView>
+          <GeneratorTour addTours={this.onAddTours} />
+          <ScrollView style={{width: '100%', maxHeight: 300}}>
+            <TourList tours={this.state.tours} view={this.onDetailView} />
+          </ScrollView>
+          <ScrollView style={{width: '100%', maxHeight: 300}}>
+            <Input />
+          </ScrollView>
+        </ScrollView>
       </View>
     );
   }
