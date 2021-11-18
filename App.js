@@ -25,7 +25,7 @@ class App extends Component {
   changeState = () => {
     if (!this.state.sampleBoolean) {
       this.setState({
-        sampleText: 'We are didden...!',
+        sampleText: 'We are didden..!',
         sampleBoolean: true,
       });
     } else {
