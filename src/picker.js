@@ -31,7 +31,10 @@ class PickerComponent extends Component {
           selectedValue={this.state.country}
           onValueChange={(val, index) => this.setState({country: val})}>
           <Picker.Item label="Korea" value="korea" />
+          <Picker.Item label="USA" value="canada" />
           <Picker.Item label="Canada" value="canada" />
+          <Picker.Item label="China" value="canada" />
+          <Picker.Item label="Japan" value="canada" />
         </Picker>
       </View>
     );

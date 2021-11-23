@@ -1,4 +1,5 @@
-import React, {Component, version} from 'react';
+import 'react-native-gesture-handler';
+import React, {Component} from 'react';
 import {
   View,
   Button,
@@ -22,6 +23,7 @@ class ModalComponent extends Component {
     return (
       <View style={{width: '100%', alignItems: 'center'}}>
         <Button title="Open Modal" onPress={this.handleModal} />
+
         <Modal visible={this.state.modal} animationType="slide">
           <View style={{marginTop: 60}}>
             <TouchableWithoutFeedback
@@ -33,6 +35,11 @@ class ModalComponent extends Component {
                 style={styles.image}
                 resizeMode="contain"
               />
+              {/* <Image
+                source={{uri: 'http://146.56.174.150:8080/img/image.jpg'}}
+                style={styles.image}
+                resizeMode="contain"
+              /> */}
             </TouchableWithoutFeedback>
           </View>
 

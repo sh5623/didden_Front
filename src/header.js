@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 
 const Header = props => (
   <TouchableOpacity
     style={styles.background}
-    onPress={() => alert('Hi, We are didden!')}>
+    onPress={() => Alert.alert('didden', 'Hi, We are didden!')}>
     <View>
       <Text style={styles.textStyle}>{props.name}</Text>
     </View>
