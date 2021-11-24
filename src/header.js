@@ -1,15 +1,17 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 
-const Header = props => (
-  <TouchableOpacity
-    style={styles.background}
-    onPress={() => Alert.alert('didden', 'Hi, We are didden!')}>
-    <View>
-      <Text style={styles.textStyle}>{props.name}</Text>
-    </View>
-  </TouchableOpacity>
-);
+function Header({name}) {
+  return (
+    <TouchableOpacity
+      style={styles.background}
+      onPress={() => Alert.alert('didden', 'Hi, We are didden!')}>
+      <View>
+        <Text style={styles.textStyle}>{name}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+}
 
 const styles = StyleSheet.create({
   background: {

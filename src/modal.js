@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
-import React, {Component} from 'react';
+import React, {useState} from 'react';
+import {useRoute} from '@react-navigation/native';
 import {
   View,
   Button,
@@ -7,47 +8,43 @@ import {
   Image,
   StyleSheet,
   TouchableWithoutFeedback,
+  Alert,
 } from 'react-native';
 import Flower from '../image/LDW_0695.jpg';
 
-class ModalComponent extends Component {
-  state = {
-    modal: false,
-  };
+function ModalComponent() {
+  const [modal, setModal] = useState(false);
 
   handleModal = () => {
-    this.setState({modal: this.state.modal ? false : true});
+    setModal(modal ? false : true);
   };
 
-  render() {
-    return (
-      <View style={{width: '100%', alignItems: 'center'}}>
-        <Button title="Open Modal" onPress={this.handleModal} />
+  const route = useRoute();
+  const appName = route.params ? route.params.appName : null;
 
-        <Modal visible={this.state.modal} animationType="slide">
-          <View style={{marginTop: 60}}>
-            <TouchableWithoutFeedback
-              onPress={() => {
-                alert('Click Event!');
-              }}>
-              <Image
-                source={Flower}
-                style={styles.image}
-                resizeMode="contain"
-              />
-              {/* <Image
+  return (
+    <View style={{width: '100%', alignItems: 'center'}}>
+      <Button title="Open Modal" onPress={this.handleModal} />
+
+      <Modal visible={modal} animationType="slide">
+        <View style={{marginTop: 60}}>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              Alert.alert(appName, `${appName} - Click Event!`);
+            }}>
+            <Image source={Flower} style={styles.image} resizeMode="contain" />
+            {/* <Image
                 source={{uri: 'http://146.56.174.150:8080/img/image.jpg'}}
                 style={styles.image}
                 resizeMode="contain"
               /> */}
-            </TouchableWithoutFeedback>
-          </View>
+          </TouchableWithoutFeedback>
+        </View>
 
-          <Button title="Go Back" onPress={this.handleModal} />
-        </Modal>
-      </View>
-    );
-  }
+        <Button title="Go Back" onPress={this.handleModal} />
+      </Modal>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -1,42 +1,36 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Button, ScrollView} from 'react-native';
 import NumList from './numlist';
 
-class Generator extends Component {
-  state = {
-    random: [],
-  };
+function Generator() {
+  const [random, setRandom] = useState([]);
 
   onAddRandomNum = async () => {
     const randomNum = Math.floor(Math.random() * 100) + 1;
-    this.setState(current => ({
-      random: [...current.random, randomNum],
-    }));
+    setRandom(current => [...random, randomNum]);
   };
 
   onNumDelete = position => {
-    const newArray = this.state.random.filter((num, index) => {
+    const newArray = random.filter((num, index) => {
       return position != index;
     });
 
-    this.setState({random: newArray});
+    setRandom(newArray);
   };
 
-  render() {
-    return (
-      <View style={styles.generator}>
-        <Button
-          title="Add Number"
-          onPress={() => {
-            this.onAddRandomNum();
-          }}
-        />
-        <ScrollView style={{width: '100%'}} bounces={true}>
-          <NumList nums={this.state.random} delete={this.onNumDelete} />
-        </ScrollView>
-      </View>
-    );
-  }
+  return (
+    <View style={styles.generator}>
+      <Button
+        title="Add Number"
+        onPress={() => {
+          this.onAddRandomNum();
+        }}
+      />
+      <ScrollView style={{width: '100%'}} bounces={true}>
+        <NumList nums={random} deleteFn={this.onNumDelete} />
+      </ScrollView>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

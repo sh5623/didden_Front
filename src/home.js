@@ -1,5 +1,4 @@
-import 'react-native-gesture-handler';
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Button,
@@ -11,78 +10,76 @@ import {
 } from 'react-native';
 import Header from '../src/header';
 
-class Home extends Component {
-  state = {
-    appName: 'didden',
-    myTextInput: '',
-    alphabet: [],
-  };
+function Home({navigation}) {
+  const [appName, setAppName] = useState('.didden');
+  const [myTextInput, setMyTextInput] = useState('');
+  const [alphabet, setAlphabet] = useState([]);
 
   onChangeInput = event => {
-    this.setState({
-      myTextInput: event,
-    });
+    setMyTextInput(event);
   };
 
   onAddTextInput = () => {
-    if (this.state.myTextInput === '') {
+    if (myTextInput === '') {
       Alert.alert('didden', '내용을 입력해 주세요!');
       return;
     }
-    this.setState(current => ({
-      myTextInput: '',
-      alphabet: [...current.alphabet, current.myTextInput],
-    }));
+
+    setMyTextInput('');
+    setAlphabet(current => [...alphabet, myTextInput]);
   };
 
-  render() {
-    return (
-      <View style={styles.home}>
-        <Header name={this.state.appName} />
-        <Button
-          title="Go Generator"
-          onPress={() => {
-            this.props.navigation.navigate('generator');
-          }}
-        />
-        <Button
-          title="Go GeneratorTour"
-          onPress={() => {
-            this.props.navigation.navigate('generatorTour');
-          }}
-        />
-        <Button
-          title="Go Modal"
-          onPress={() => {
-            this.props.navigation.navigate('modal');
-          }}
-        />
-        <Button
-          title="Go Picker"
-          onPress={() => {
-            this.props.navigation.navigate('picker');
-          }}
-        />
+  return (
+    <View style={styles.home}>
+      <Header name={appName} />
+      <Button
+        title="Go Generator"
+        onPress={() => {
+          navigation.navigate('generator');
+        }}
+      />
+      <Button
+        title="Go GeneratorTour"
+        onPress={() => {
+          navigation.navigate('generatorTour');
+        }}
+      />
+      <Button
+        title="Go Modal"
+        onPress={() => {
+          navigation.navigate('modal', {
+            appName: appName,
+          });
+        }}
+      />
+      <Button
+        title="Go Picker"
+        onPress={() => {
+          navigation.navigate('picker', {
+            value: 50,
+            country: 'korea',
+          });
+        }}
+      />
 
-        <ScrollView style={{width: '100%', maxHeight: 300}}>
-          <TextInput
-            value={this.state.myTextInput}
-            style={styles.input}
-            onChangeText={this.onChangeInput}
-            autoCapitalize={'none'}
-          />
-          <Button title="Add Text Input" onPress={this.onAddTextInput} />
-          <ScrollView style={{width: '100%'}}>
-            {this.state.alphabet.map((word, index) => (
-              <Text style={styles.mainText} key={index}>
-                {word}
-              </Text>
-            ))}
-          </ScrollView>
+      <ScrollView style={{width: '100%', maxHeight: 300}}>
+        <TextInput
+          value={myTextInput}
+          style={styles.input}
+          onChangeText={this.onChangeInput}
+          autoCapitalize={'none'}
+        />
+        <Button title="Add Text Input" onPress={this.onAddTextInput} />
+        <ScrollView style={{width: '100%'}}>
+          {alphabet.map((word, index) => (
+            <Text style={styles.mainText} key={index}>
+              {word}
+            </Text>
+          ))}
         </ScrollView>
-      </View>
-    );
-  }
+      </ScrollView>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
