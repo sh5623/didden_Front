@@ -1,45 +1,53 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   StyleSheet,
   Button,
   ActivityIndicator,
   ScrollView,
+  Alert,
 } from 'react-native';
 import TourList from './tourlist';
 import axios from 'axios';
 
-class GeneratorTour extends Component {
-  state = {
-    tours: [],
-    tourNum: 0,
-    activityLoading: false,
-  };
+function GeneratorTour({navigation}) {
+  const [tours, setTours] = useState([]);
+  const [tourNum, setTourNum] = useState(0);
+  const [activityLoading, setActivityLoading] = useState(false);
 
   onAddTours = async () => {
-    this.setState({activityLoading: true});
+    setActivityLoading(true);
     await axios
       .get('http://146.56.174.150:8080/user/test')
       .then(response => {
-        if (this.state.tourNum > 9) {
-          alert(`모든 Tour 정보를 갖고 왔습니다.`);
+        if (tourNum > 9) {
+          Alert.alert('didden', '모든 Tour 정보를 갖고 왔습니다.');
           return;
         } else {
-          this.setState(current => ({
-            tours: [...current.tours, response.data.data[this.state.tourNum]],
-            tourNum: current.tourNum + 1,
-          }));
+          setTours(current => [...tours, response.data.data[tourNum]]);
+          setTourNum(current => tourNum + 1);
         }
       })
       .catch(error => {
-        alert(`Fail : ${error.message}`);
+        Alert.alert('didden', `Fail : ${error.message}`);
       })
       .finally(() => {
-        this.setState({activityLoading: false});
+        setActivityLoading(false);
       });
   };
 
   onDetailView = tourDetail => {
+    // navigation.setOptions({
+    //   title: tourDetail.정보명,
+    //   headerStyle: {
+    //     backgroundColor: 'lavender',
+    //   },
+    //   headerTitleStyle: {
+    //     fontWeight: 'bold',
+    //     color: 'purple',
+    //   },
+    // });
+
     Alert.alert(
       `didden`,
       `지역 : ${tourDetail.지역}
@@ -51,28 +59,27 @@ class GeneratorTour extends Component {
     );
   };
 
-  render() {
-    return (
-      <View style={styles.generatorTour}>
+  return (
+    <View style={styles.generatorTour}>
+      <Button
+        title="Add Tours"
+        onPress={() => {
+          this.onAddTours();
+        }}
+      />
+      <View style={{zIndex: 1}}>
         <ActivityIndicator
           style={styles.loading}
-          animating={this.state.activityLoading}
+          animating={activityLoading}
           size="large"
           color="purple"
         />
-
-        <Button
-          title="Add Tours"
-          onPress={() => {
-            this.onAddTours();
-          }}
-        />
-        <ScrollView style={{width: '100%', maxHeight: 300}}>
-          <TourList tours={this.state.tours} view={this.onDetailView} />
-        </ScrollView>
       </View>
-    );
-  }
+      <ScrollView style={{width: '100%'}}>
+        <TourList tours={tours} view={this.onDetailView} />
+      </ScrollView>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -86,10 +93,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    top: 0,
     bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
+    top: 250,
   },
 });
 

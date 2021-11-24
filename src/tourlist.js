@@ -1,16 +1,16 @@
 import React from 'react';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const TourList = props => {
-  return props.tours.map((tour, index) => (
+function TourList({tours, view}) {
+  return tours.map((tour, index) => (
     <TouchableOpacity
       style={styles.tourList}
       key={index}
-      onPress={() => props.view(tour)}>
+      onPress={() => view(tour)}>
       <Text>{tour.정보명}</Text>
     </TouchableOpacity>
   ));
-};
+}
 
 const styles = StyleSheet.create({
   tourList: {

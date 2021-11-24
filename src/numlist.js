@@ -1,16 +1,16 @@
 import React from 'react';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const NumList = props => {
-  return props.nums.map((num, index) => (
+function NumList({nums, deleteFn}) {
+  return nums.map((num, index) => (
     <TouchableOpacity
       style={styles.numList}
       key={index}
-      onPress={() => props.delete(index)}>
+      onPress={() => deleteFn(index)}>
       <Text>{num}</Text>
     </TouchableOpacity>
   ));
-};
+}
 
 const styles = StyleSheet.create({
   numList: {
