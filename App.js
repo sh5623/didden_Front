@@ -50,7 +50,7 @@ function App() {
                 Alert.alert('didden', 'Hi, we are didden!');
               }}>
               <Image
-                style={{width: 25, height: 25, marginRight: 10}}
+                style={{width: 25, height: 25, marginRight: 15}}
                 source={require('./image/info.png')}
               />
             </TouchableWithoutFeedback>
@@ -71,6 +71,7 @@ function App() {
           component={HomeStack}
           options={{
             tabBarLabel: '홈',
+            headerShown: false,
           }}
         />
         <Tab.Screen

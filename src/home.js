@@ -43,6 +43,18 @@ function Home({navigation}) {
           navigation.navigate('input');
         }}
       />
+      <Button
+        title="Go ImageLoader"
+        onPress={() => {
+          navigation.navigate('imageLoader');
+        }}
+      />
+      <Button
+        title="Go ImagePicker"
+        onPress={() => {
+          navigation.navigate('imagePicker');
+        }}
+      />
     </View>
   );
 }
