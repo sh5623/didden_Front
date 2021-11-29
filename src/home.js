@@ -55,6 +55,12 @@ function Home({navigation}) {
           navigation.navigate('imagePicker');
         }}
       />
+      <Button
+        title="Go Animation"
+        onPress={() => {
+          navigation.navigate('animation');
+        }}
+      />
     </View>
   );
 }

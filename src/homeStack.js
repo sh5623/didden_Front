@@ -9,6 +9,7 @@ import Picker from './picker';
 import Input from './input';
 import ImageLoader from './imageLoader';
 import ImagePicker from './imagePicker';
+import Animation from './animation';
 import LogoComponent from './logo';
 
 const Stack = createNativeStackNavigator();
@@ -47,6 +48,7 @@ function HomeStack() {
       <Stack.Screen name="input" component={Input} />
       <Stack.Screen name="imageLoader" component={ImageLoader} />
       <Stack.Screen name="imagePicker" component={ImagePicker} />
+      <Stack.Screen name="animation" component={Animation} />
     </Stack.Navigator>
   );
 }
