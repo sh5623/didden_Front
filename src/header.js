@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 
-function Header({name}) {
+function Header({name, tokenAcc}) {
   return (
     <TouchableOpacity
       style={styles.background}
-      onPress={() => Alert.alert('didden', 'Hi, We are didden!')}>
+      onPress={() => Alert.alert('didden', `${tokenAcc}`)}>
       <View>
         <Text style={styles.textStyle}>{name}</Text>
       </View>

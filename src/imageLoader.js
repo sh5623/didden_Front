@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
-import {useRoute} from '@react-navigation/native';
+import {useRoute, useNavigation} from '@react-navigation/native';
 import {
   View,
   Image,
@@ -17,17 +17,28 @@ function ImageLoader() {
   const [imageList, setImageList] = useState([]);
   const [activityLoading, setActivityLoading] = useState(false);
 
-  useEffect(() => {
+  const getImageApi = async () => {
     setActivityLoading(true);
-    axios
-      .get('http://146.56.174.150:8080/tour/api/image')
+    await axios
+      .get(`http://146.56.174.150:8080/tour/api/image`)
       .then(response => {
-        setImageList(response.data.body.items.item);
-        setActivityLoading(false);
+        if (response.data === undefined) {
+          Alert.alert('didden', '데이터를 불러오는중 오류가 발생했습니다.');
+          return;
+        } else {
+          setImageList(response.data.body.items.item);
+        }
       })
       .catch(error => {
         Alert.alert('didden', `이미지 로드에 실패했습니다. ${error.message}`);
+      })
+      .finally(() => {
+        setActivityLoading(false);
       });
+  };
+
+  useEffect(() => {
+    getImageApi();
   }, []);
 
   return (

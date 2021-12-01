@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useState} from 'react';
 import {Alert, TouchableWithoutFeedback, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -30,13 +30,31 @@ const TabBarIcon = (focused, name) => {
 };
 
 function App() {
+  const [tokenAcc, setTokenAcc] = useState('');
+  const [tokenRef, setTokenRef] = useState('');
+  const [userId, setUserId] = useState('');
+
+  const homeStack = () => <HomeStack setAppToken={setAppToken} />;
+
+  setAppToken = (tokenAcc, tokenRef, userId) => {
+    setTokenAcc(tokenAcc);
+    setTokenRef(tokenRef);
+    setUserId(userId);
+  };
+
   return (
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="homeStack"
         screenOptions={({route}) => ({
           title: '.didden',
-          headerTitle: () => <LogoComponent />,
+          headerTitle: () => (
+            <LogoComponent
+              tokenAcc={tokenAcc}
+              tokenRef={tokenRef}
+              userId={userId}
+            />
+          ),
           headerStyle: {
             backgroundColor: 'lavender',
           },
@@ -68,7 +86,7 @@ function App() {
         />
         <Tab.Screen
           name="homeStack"
-          component={HomeStack}
+          component={homeStack}
           options={{
             tabBarLabel: '홈',
             headerShown: false,

@@ -1,13 +1,35 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {View, Button, StyleSheet} from 'react-native';
 import Header from '../src/header';
 
-function Home({navigation}) {
+function Home({setToken}) {
+  const route = useRoute();
+  const navigation = useNavigation();
   const [appName, setAppName] = useState('.didden');
+
+  useEffect(() => {
+    if (route.params) {
+      setToken(
+        route.params.token_acc,
+        route.params.token_ref,
+        route.params.userId,
+      );
+    }
+  }, []);
 
   return (
     <View style={styles.home}>
-      <Header name={appName} />
+      <Header
+        name={appName}
+        tokenAcc={route.params ? route.params.token_acc : ''}
+      />
+      <Button
+        title="Go Login"
+        onPress={() => {
+          navigation.navigate('login');
+        }}
+      />
       <Button
         title="Go Generator"
         onPress={() => {
@@ -17,7 +39,9 @@ function Home({navigation}) {
       <Button
         title="Go GeneratorTour"
         onPress={() => {
-          navigation.navigate('generatorTour');
+          navigation.navigate('generatorTour', {
+            token_acc: route.params ? route.params.token_acc : '',
+          });
         }}
       />
       <Button
