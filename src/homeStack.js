@@ -18,14 +18,12 @@ const Stack = createNativeStackNavigator();
 function HomeStack({setAppToken}) {
   const [tokenAcc, setTokenAcc] = useState('');
   const [tokenRef, setTokenRef] = useState('');
-  const [userId, setUserId] = useState('');
 
-  setToken = (tokenAcc, tokenRef, userId) => {
+  setToken = (tokenAcc, tokenRef) => {
     setTokenAcc(tokenAcc);
     setTokenRef(tokenRef);
-    setUserId(userId);
 
-    setAppToken(tokenAcc, tokenRef, userId);
+    setAppToken(tokenAcc, tokenRef);
   };
 
   const homeNavigation = () => <Home setToken={setToken} />;
@@ -36,11 +34,7 @@ function HomeStack({setAppToken}) {
       screenOptions={{
         title: '',
         headerTitle: () => (
-          <LogoComponent
-            tokenAcc={tokenAcc}
-            tokenRef={tokenRef}
-            userId={userId}
-          />
+          <LogoComponent tokenAcc={tokenAcc} tokenRef={tokenRef} />
         ),
         headerStyle: {
           backgroundColor: 'lavender',

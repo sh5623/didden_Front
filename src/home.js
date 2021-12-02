@@ -10,11 +10,7 @@ function Home({setToken}) {
 
   useEffect(() => {
     if (route.params) {
-      setToken(
-        route.params.token_acc,
-        route.params.token_ref,
-        route.params.userId,
-      );
+      setToken(route.params.token_acc, route.params.token_ref);
     }
   }, []);
 

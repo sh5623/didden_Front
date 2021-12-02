@@ -32,14 +32,12 @@ const TabBarIcon = (focused, name) => {
 function App() {
   const [tokenAcc, setTokenAcc] = useState('');
   const [tokenRef, setTokenRef] = useState('');
-  const [userId, setUserId] = useState('');
 
   const homeStack = () => <HomeStack setAppToken={setAppToken} />;
 
-  setAppToken = (tokenAcc, tokenRef, userId) => {
+  setAppToken = (tokenAcc, tokenRef) => {
     setTokenAcc(tokenAcc);
     setTokenRef(tokenRef);
-    setUserId(userId);
   };
 
   return (
@@ -49,11 +47,7 @@ function App() {
         screenOptions={({route}) => ({
           title: '.didden',
           headerTitle: () => (
-            <LogoComponent
-              tokenAcc={tokenAcc}
-              tokenRef={tokenRef}
-              userId={userId}
-            />
+            <LogoComponent tokenAcc={tokenAcc} tokenRef={tokenRef} />
           ),
           headerStyle: {
             backgroundColor: 'lavender',

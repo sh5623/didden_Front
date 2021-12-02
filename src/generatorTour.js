@@ -29,7 +29,7 @@ function GeneratorTour({navigation}) {
   onAddTours = async () => {
     setActivityLoading(true);
     await axios
-      .get(`http://146.56.174.150:8080/user/test`)
+      .get(`http://146.56.155.91:8080/user/test`)
       .then(response => {
         if (response.data.data === undefined) {
           Alert.alert(
