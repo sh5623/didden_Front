@@ -1,13 +1,31 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {View, Button, StyleSheet} from 'react-native';
 import Header from '../src/header';
 
-function Home({navigation}) {
+function Home({setToken}) {
+  const route = useRoute();
+  const navigation = useNavigation();
   const [appName, setAppName] = useState('.didden');
+
+  useEffect(() => {
+    if (route.params) {
+      setToken(route.params.token_acc, route.params.token_ref);
+    }
+  }, []);
 
   return (
     <View style={styles.home}>
-      <Header name={appName} />
+      <Header
+        name={appName}
+        tokenAcc={route.params ? route.params.token_acc : ''}
+      />
+      <Button
+        title="Go Login"
+        onPress={() => {
+          navigation.navigate('login');
+        }}
+      />
       <Button
         title="Go Generator"
         onPress={() => {
@@ -17,7 +35,9 @@ function Home({navigation}) {
       <Button
         title="Go GeneratorTour"
         onPress={() => {
-          navigation.navigate('generatorTour');
+          navigation.navigate('generatorTour', {
+            token_acc: route.params ? route.params.token_acc : '',
+          });
         }}
       />
       <Button
@@ -41,6 +61,24 @@ function Home({navigation}) {
         title="Go Input"
         onPress={() => {
           navigation.navigate('input');
+        }}
+      />
+      <Button
+        title="Go ImageLoader"
+        onPress={() => {
+          navigation.navigate('imageLoader');
+        }}
+      />
+      <Button
+        title="Go ImagePicker"
+        onPress={() => {
+          navigation.navigate('imagePicker');
+        }}
+      />
+      <Button
+        title="Go Animation"
+        onPress={() => {
+          navigation.navigate('animation');
         }}
       />
     </View>

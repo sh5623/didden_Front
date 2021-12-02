@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -8,18 +8,36 @@ import {
   Alert,
 } from 'react-native';
 import TourList from './tourlist';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import axios from 'axios';
 
 function GeneratorTour({navigation}) {
+  const route = useRoute();
+  const reactNavigation = useNavigation();
   const [tours, setTours] = useState([]);
   const [tourNum, setTourNum] = useState(0);
   const [activityLoading, setActivityLoading] = useState(false);
 
+  useEffect(() => {
+    if (route.params.token_acc === '') {
+      Alert.alert('didden', '로그인이 필요합니다!');
+      reactNavigation.navigate('login');
+      return;
+    }
+  }, []);
+
   onAddTours = async () => {
     setActivityLoading(true);
     await axios
-      .get('http://146.56.174.150:8080/user/test')
+      .get(`http://146.56.155.91:8080/user/test`)
       .then(response => {
+        if (response.data.data === undefined) {
+          Alert.alert(
+            'didden',
+            '데이터 정보를 불러오는중 오류가 발생했습니다.',
+          );
+          return;
+        }
         if (tourNum > 9) {
           Alert.alert('didden', '모든 Tour 정보를 갖고 왔습니다.');
           return;
@@ -37,17 +55,6 @@ function GeneratorTour({navigation}) {
   };
 
   onDetailView = tourDetail => {
-    // navigation.setOptions({
-    //   title: tourDetail.정보명,
-    //   headerStyle: {
-    //     backgroundColor: 'lavender',
-    //   },
-    //   headerTitleStyle: {
-    //     fontWeight: 'bold',
-    //     color: 'purple',
-    //   },
-    // });
-
     Alert.alert(
       `didden`,
       `지역 : ${tourDetail.지역}

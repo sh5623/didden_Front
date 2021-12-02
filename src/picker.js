@@ -5,18 +5,13 @@ import {Picker} from '@react-native-picker/picker';
 import Slider from '@react-native-community/slider';
 
 function PickerComponent() {
-  const [country, setCountry] = useState('');
-  const [value, setValue] = useState(0);
+  const route = useRoute();
+  const [country, setCountry] = useState(route.params.country);
+  const [value, setValue] = useState(route.params.value);
 
   sliderValueChange = value => {
     setValue(value);
   };
-
-  const route = useRoute();
-  useEffect(() => {
-    setValue(route.params.value);
-    setCountry(route.params.country);
-  }, []);
 
   return (
     <View style={styles.container}>
