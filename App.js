@@ -1,5 +1,7 @@
 import 'react-native-gesture-handler';
-import React, {useState} from 'react';
+import React from 'react';
+import {useSelector} from 'react-redux';
+import {selectTokenAcc, selectTokenRef} from './src/store/tokenReducer';
 import {Alert, TouchableWithoutFeedback, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -30,15 +32,10 @@ const TabBarIcon = (focused, name) => {
 };
 
 function App() {
-  const [tokenAcc, setTokenAcc] = useState('');
-  const [tokenRef, setTokenRef] = useState('');
+  const tokenAcc = useSelector(selectTokenAcc);
+  const tokenRef = useSelector(selectTokenRef);
 
-  const homeStack = () => <HomeStack setAppToken={setAppToken} />;
-
-  setAppToken = (tokenAcc, tokenRef) => {
-    setTokenAcc(tokenAcc);
-    setTokenRef(tokenRef);
-  };
+  const homeStack = () => <HomeStack />;
 
   return (
     <NavigationContainer>

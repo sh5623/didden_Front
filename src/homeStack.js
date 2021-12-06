@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Alert, TouchableWithoutFeedback, Image} from 'react-native';
+import {useSelector} from 'react-redux';
+import {selectTokenAcc, selectTokenRef} from './store/tokenReducer';
 import Home from './home';
 import Modal from './modal';
 import Generator from './generator';
@@ -10,23 +12,17 @@ import Input from './input';
 import ImageLoader from './imageLoader';
 import ImagePicker from './imagePicker';
 import Animation from './animation';
+import Increase from './increase';
 import Login from './login';
 import LogoComponent from './logo';
 
 const Stack = createNativeStackNavigator();
 
-function HomeStack({setAppToken}) {
-  const [tokenAcc, setTokenAcc] = useState('');
-  const [tokenRef, setTokenRef] = useState('');
+function HomeStack() {
+  const tokenAcc = useSelector(selectTokenAcc);
+  const tokenRef = useSelector(selectTokenRef);
 
-  setToken = (tokenAcc, tokenRef) => {
-    setTokenAcc(tokenAcc);
-    setTokenRef(tokenRef);
-
-    setAppToken(tokenAcc, tokenRef);
-  };
-
-  const homeNavigation = () => <Home setToken={setToken} />;
+  const homeNavigation = () => <Home />;
 
   return (
     <Stack.Navigator
@@ -65,6 +61,7 @@ function HomeStack({setAppToken}) {
       <Stack.Screen name="imagePicker" component={ImagePicker} />
       <Stack.Screen name="animation" component={Animation} />
       <Stack.Screen name="login" component={Login} />
+      <Stack.Screen name="increase" component={Increase} />
     </Stack.Navigator>
   );
 }
