@@ -2,11 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {View, Button, StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
-import {
-  selectLoginId,
-  selectTokenAcc,
-  selectTokenRef,
-} from './store/tokenReducer';
+import {selectTokenAcc} from './store/tokenReducer';
 import Header from '../src/header';
 
 function Home() {
