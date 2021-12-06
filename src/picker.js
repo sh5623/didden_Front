@@ -3,14 +3,19 @@ import {useRoute} from '@react-navigation/native';
 import {View, Text, StyleSheet} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import Slider from '@react-native-community/slider';
+import {useDispatch, useSelector} from 'react-redux';
+import {setByAmount, selectCount} from './store/counterReducer';
 
 function PickerComponent() {
   const route = useRoute();
   const [country, setCountry] = useState(route.params.country);
-  const [value, setValue] = useState(route.params.value);
+  //const [value, setValue] = useState(route.params.value);
+  const value = useSelector(selectCount);
+  const dispatch = useDispatch();
 
   sliderValueChange = value => {
-    setValue(value);
+    //setValue(value);
+    dispatch(setByAmount(value));
   };
 
   return (
