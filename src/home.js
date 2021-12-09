@@ -80,6 +80,12 @@ function Home() {
           navigation.navigate('increase');
         }}
       />
+      <Button
+        title="Kakao Login"
+        onPress={() => {
+          navigation.navigate('kakaoLogin');
+        }}
+      />
     </View>
   );
 }

@@ -11,9 +11,10 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		29A6987FE4FCA75E8AAAFD4D /* libPods-didden.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDE9E0A806405A8B3F22752 /* libPods-didden.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		BD3AC05CD8AD53A7FC4BE32A /* libPods-didden-diddenTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCAA4113D2B89E402776F054 /* libPods-didden-diddenTests.a */; };
+		A9A534BE2760323600BB9062 /* SwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A534BD2760323600BB9062 /* SwiftBridge.swift */; };
+		B5185383AAAB67DAB44C4353 /* libPods-didden.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E15B86E22549048D4B6D055 /* libPods-didden.a */; };
+		C4C907B5191F871EEA9CAE0F /* libPods-didden-diddenTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A50864ABCD6DF0E3C67374F0 /* libPods-didden-diddenTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00078E9FFC421127CC47D11C /* Pods-diddenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diddenTests.release.xcconfig"; path = "Target Support Files/Pods-diddenTests/Pods-diddenTests.release.xcconfig"; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* diddenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = diddenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* diddenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = diddenTests.m; sourceTree = "<group>"; };
@@ -37,11 +39,14 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = didden/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = didden/main.m; sourceTree = "<group>"; };
 		75A4DDD00CDF94861AF7C05C /* Pods-didden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-didden.debug.xcconfig"; path = "Target Support Files/Pods-didden/Pods-didden.debug.xcconfig"; sourceTree = "<group>"; };
+		7E15B86E22549048D4B6D055 /* libPods-didden.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-didden.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = didden/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A50864ABCD6DF0E3C67374F0 /* libPods-didden-diddenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-didden-diddenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9A534BD2760323600BB9062 /* SwiftBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBridge.swift; sourceTree = "<group>"; };
+		A9A534BF2760325700BB9062 /* didden-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "didden-Bridging-Header.h"; sourceTree = "<group>"; };
 		C66566C1B83ED01A5C629C85 /* Pods-didden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-didden.release.xcconfig"; path = "Target Support Files/Pods-didden/Pods-didden.release.xcconfig"; sourceTree = "<group>"; };
-		CCAA4113D2B89E402776F054 /* libPods-didden-diddenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-didden-diddenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFFC060DF77C3EF75DEA58BB /* Pods-diddenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diddenTests.debug.xcconfig"; path = "Target Support Files/Pods-diddenTests/Pods-diddenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DEDC4E2D0BAC07795E87D67F /* Pods-didden-diddenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-didden-diddenTests.release.xcconfig"; path = "Target Support Files/Pods-didden-diddenTests/Pods-didden-diddenTests.release.xcconfig"; sourceTree = "<group>"; };
-		DFDE9E0A806405A8B3F22752 /* libPods-didden.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-didden.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E863ADEEB560936AA920EF91 /* Pods-didden-diddenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-didden-diddenTests.debug.xcconfig"; path = "Target Support Files/Pods-didden-diddenTests/Pods-didden-diddenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -51,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD3AC05CD8AD53A7FC4BE32A /* libPods-didden-diddenTests.a in Frameworks */,
+				C4C907B5191F871EEA9CAE0F /* libPods-didden-diddenTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29A6987FE4FCA75E8AAAFD4D /* libPods-didden.a in Frameworks */,
+				B5185383AAAB67DAB44C4353 /* libPods-didden.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +97,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				A9A534BD2760323600BB9062 /* SwiftBridge.swift */,
+				A9A534BF2760325700BB9062 /* didden-Bridging-Header.h */,
 			);
 			name = didden;
 			sourceTree = "<group>";
@@ -100,8 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				DFDE9E0A806405A8B3F22752 /* libPods-didden.a */,
-				CCAA4113D2B89E402776F054 /* libPods-didden-diddenTests.a */,
+				7E15B86E22549048D4B6D055 /* libPods-didden.a */,
+				A50864ABCD6DF0E3C67374F0 /* libPods-didden-diddenTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -113,6 +120,8 @@
 				C66566C1B83ED01A5C629C85 /* Pods-didden.release.xcconfig */,
 				E863ADEEB560936AA920EF91 /* Pods-didden-diddenTests.debug.xcconfig */,
 				DEDC4E2D0BAC07795E87D67F /* Pods-didden-diddenTests.release.xcconfig */,
+				CFFC060DF77C3EF75DEA58BB /* Pods-diddenTests.debug.xcconfig */,
+				00078E9FFC421127CC47D11C /* Pods-diddenTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -159,8 +168,8 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				D0E6EA1D02D7DA1FDAF1AB8F /* [CP] Embed Pods Frameworks */,
-				A68AD40DD80851BFBAC08CA3 /* [CP] Copy Pods Resources */,
+				DA1434A7AC2376F8228F2C73 /* [CP] Embed Pods Frameworks */,
+				293E737344CF841FCC4675EA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,8 +191,8 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				92E82E8A1B844B9BE48BCA83 /* [CP] Embed Pods Frameworks */,
-				6CEDF0C4FC8CBA2D83CEF89B /* [CP] Copy Pods Resources */,
+				6A4E7175A85261F066D8E304 /* [CP] Embed Pods Frameworks */,
+				B2152C3C8566D26A676CBBED /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,7 +216,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1310;
 					};
 				};
 			};
@@ -264,6 +273,23 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
+		293E737344CF841FCC4675EA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-didden-diddenTests/Pods-didden-diddenTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-didden-diddenTests/Pods-didden-diddenTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-didden-diddenTests/Pods-didden-diddenTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2BB8B8F3BDE28CFE14F6115F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,24 +334,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6CEDF0C4FC8CBA2D83CEF89B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-didden/Pods-didden-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-didden/Pods-didden-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-didden/Pods-didden-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		92E82E8A1B844B9BE48BCA83 /* [CP] Embed Pods Frameworks */ = {
+		6A4E7175A85261F066D8E304 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -342,24 +351,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-didden/Pods-didden-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A68AD40DD80851BFBAC08CA3 /* [CP] Copy Pods Resources */ = {
+		B2152C3C8566D26A676CBBED /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-didden-diddenTests/Pods-didden-diddenTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-didden/Pods-didden-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-didden-diddenTests/Pods-didden-diddenTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-didden/Pods-didden-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-didden-diddenTests/Pods-didden-diddenTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-didden/Pods-didden-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D0E6EA1D02D7DA1FDAF1AB8F /* [CP] Embed Pods Frameworks */ = {
+		DA1434A7AC2376F8228F2C73 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -412,6 +421,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				A9A534BE2760323600BB9062 /* SwiftBridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +440,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E863ADEEB560936AA920EF91 /* Pods-didden-diddenTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -457,6 +468,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DEDC4E2D0BAC07795E87D67F /* Pods-didden-diddenTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = diddenTests/Info.plist;
@@ -485,6 +497,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Flipper-DoubleConversion/Frameworks\"",
+					"\"${PODS_ROOT}/OpenSSL-Universal/Frameworks\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal\"",
+				);
 				INFOPLIST_FILE = didden/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -497,6 +517,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = didden;
+				SWIFT_OBJC_BRIDGING_HEADER = "didden-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -522,6 +543,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = didden;
+				SWIFT_OBJC_BRIDGING_HEADER = "didden-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -590,6 +612,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "didden-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -648,6 +671,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "didden-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
