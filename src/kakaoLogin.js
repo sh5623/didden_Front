@@ -38,6 +38,7 @@ function KakaoLogin() {
       });
   };
 
+  // 카카카오 로그아웃
   kakaoLogout = () => {
     KakaoLogins.logout()
       .then(result => {
