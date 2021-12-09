@@ -1,6 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Alert, TouchableWithoutFeedback, Image} from 'react-native';
+import {useSelector} from 'react-redux';
+import {
+  selectTokenAcc,
+  selectTokenRef,
+  selectKakaoUserEmail,
+} from './store/tokenReducer';
 import Home from './home';
 import Modal from './modal';
 import Generator from './generator';
@@ -10,23 +16,19 @@ import Input from './input';
 import ImageLoader from './imageLoader';
 import ImagePicker from './imagePicker';
 import Animation from './animation';
+import Increase from './increase';
 import Login from './login';
 import LogoComponent from './logo';
+import KakaoLogin from './kakaoLogin';
 
 const Stack = createNativeStackNavigator();
 
-function HomeStack({setAppToken}) {
-  const [tokenAcc, setTokenAcc] = useState('');
-  const [tokenRef, setTokenRef] = useState('');
+function HomeStack() {
+  const tokenAcc = useSelector(selectTokenAcc);
+  const tokenRef = useSelector(selectTokenRef);
+  const userEmail = useSelector(selectKakaoUserEmail);
 
-  setToken = (tokenAcc, tokenRef) => {
-    setTokenAcc(tokenAcc);
-    setTokenRef(tokenRef);
-
-    setAppToken(tokenAcc, tokenRef);
-  };
-
-  const homeNavigation = () => <Home setToken={setToken} />;
+  const homeNavigation = () => <Home />;
 
   return (
     <Stack.Navigator
@@ -46,7 +48,7 @@ function HomeStack({setAppToken}) {
         headerRight: () => (
           <TouchableWithoutFeedback
             onPress={() => {
-              Alert.alert('didden', 'Hi, we are didden!');
+              Alert.alert('didden', `Hi! ${userEmail}`);
             }}>
             <Image
               style={{width: 25, height: 25}}
@@ -65,6 +67,8 @@ function HomeStack({setAppToken}) {
       <Stack.Screen name="imagePicker" component={ImagePicker} />
       <Stack.Screen name="animation" component={Animation} />
       <Stack.Screen name="login" component={Login} />
+      <Stack.Screen name="increase" component={Increase} />
+      <Stack.Screen name="kakaoLogin" component={KakaoLogin} />
     </Stack.Navigator>
   );
 }

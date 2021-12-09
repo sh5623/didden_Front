@@ -8,27 +8,30 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {setTokenAcc, setTokenRef, setLoginId} from './store/tokenReducer';
 import axios from 'axios';
 
 function Login() {
-  const [loginId, setLoginId] = useState('');
-  const [loginPwd, setLoginPwd] = useState('');
+  const [inputLoginId, setInputLoginId] = useState('');
+  const [inputLoginPwd, setInputLoginPwd] = useState('');
   const [activityLoading, setActivityLoading] = useState(false);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   onChangeLoginId = event => {
-    setLoginId(event);
+    setInputLoginId(event);
   };
   onChangeLoginPwd = event => {
-    setLoginPwd(event);
+    setInputLoginPwd(event);
   };
 
   onLogin = async () => {
-    if (loginId === '') {
+    if (inputLoginId === '') {
       Alert.alert('didden', 'ID를 입력해 주세요!');
       return;
     }
-    if (loginPwd === '') {
+    if (inputLoginPwd === '') {
       Alert.alert('didden', 'Password를 입력해 주세요!');
       return;
     }
@@ -37,19 +40,18 @@ function Login() {
 
     await axios
       .post(`http://146.56.155.91:8080/user/login`, {
-        userId: loginId,
-        userPassword: loginPwd,
+        userId: inputLoginId,
+        userPassword: inputLoginPwd,
       })
       .then(res => {
         if (res.data.result === true) {
           axios.defaults.headers.common['Authorization'] =
             'Bearer ' + res.data.token_acc;
+          dispatch(setLoginId(inputLoginId));
+          dispatch(setTokenAcc(res.data.token_acc));
+          dispatch(setTokenRef(res.data.token_ref));
           setTimeout(() => {
-            navigation.navigate('home', {
-              token_acc: res.data.token_acc,
-              token_ref: res.data.token_ref,
-              userId: loginId,
-            });
+            navigation.navigate('home');
           }, 1000);
         } else {
           Alert.alert('didden', res.data.error);
@@ -67,7 +69,7 @@ function Login() {
     <View style={styles.container}>
       <View style={{flexDirection: 'row'}}>
         <TextInput
-          value={loginId}
+          value={inputLoginId}
           style={styles.input}
           onChangeText={this.onChangeLoginId}
           autoCapitalize={'none'}
@@ -78,7 +80,7 @@ function Login() {
 
       <View style={{flexDirection: 'row', marginTop: 5}}>
         <TextInput
-          value={loginPwd}
+          value={inputLoginPwd}
           style={styles.input}
           onChangeText={this.onChangeLoginPwd}
           autoCapitalize={'none'}

@@ -1,25 +1,18 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {View, Button, StyleSheet} from 'react-native';
+import {useSelector} from 'react-redux';
+import {selectTokenAcc} from './store/tokenReducer';
 import Header from '../src/header';
 
-function Home({setToken}) {
-  const route = useRoute();
+function Home() {
+  const tokenAcc = useSelector(selectTokenAcc);
   const navigation = useNavigation();
   const [appName, setAppName] = useState('.didden');
 
-  useEffect(() => {
-    if (route.params) {
-      setToken(route.params.token_acc, route.params.token_ref);
-    }
-  }, []);
-
   return (
     <View style={styles.home}>
-      <Header
-        name={appName}
-        tokenAcc={route.params ? route.params.token_acc : ''}
-      />
+      <Header name={appName} tokenAcc={tokenAcc} />
       <Button
         title="Go Login"
         onPress={() => {
@@ -36,7 +29,7 @@ function Home({setToken}) {
         title="Go GeneratorTour"
         onPress={() => {
           navigation.navigate('generatorTour', {
-            token_acc: route.params ? route.params.token_acc : '',
+            token_acc: tokenAcc,
           });
         }}
       />
@@ -79,6 +72,18 @@ function Home({setToken}) {
         title="Go Animation"
         onPress={() => {
           navigation.navigate('animation');
+        }}
+      />
+      <Button
+        title="Go Increase"
+        onPress={() => {
+          navigation.navigate('increase');
+        }}
+      />
+      <Button
+        title="Kakao Login"
+        onPress={() => {
+          navigation.navigate('kakaoLogin');
         }}
       />
     </View>
