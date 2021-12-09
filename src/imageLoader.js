@@ -20,7 +20,7 @@ function ImageLoader() {
   const getImageApi = async () => {
     setActivityLoading(true);
     await axios
-      .get(`http://146.56.155.91:8080/tour/api/info/image`)
+      .get(`http://localhost:8080/tour/api/info/image`)
       .then(response => {
         if (response.data === undefined) {
           Alert.alert('didden', '데이터를 불러오는중 오류가 발생했습니다.');

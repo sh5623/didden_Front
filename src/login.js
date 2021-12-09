@@ -39,7 +39,7 @@ function Login() {
     setActivityLoading(true);
 
     await axios
-      .post(`http://146.56.155.91:8080/user/login`, {
+      .post(`http://localhost:8080/user/login`, {
         userId: inputLoginId,
         userPassword: inputLoginPwd,
       })
