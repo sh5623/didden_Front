@@ -20,6 +20,7 @@ import Increase from './increase';
 import Login from './login';
 import LogoComponent from './logo';
 import KakaoLogin from './kakaoLogin';
+import NaverLogin from './naverLogin';
 
 const Stack = createNativeStackNavigator();
 
@@ -69,6 +70,7 @@ function HomeStack() {
       <Stack.Screen name="login" component={Login} />
       <Stack.Screen name="increase" component={Increase} />
       <Stack.Screen name="kakaoLogin" component={KakaoLogin} />
+      <Stack.Screen name="naverLogin" component={NaverLogin} />
     </Stack.Navigator>
   );
 }
