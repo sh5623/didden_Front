@@ -1,6 +1,13 @@
 import React, {useState} from 'react';
 import * as KakaoLogins from '@react-native-seoul/kakao-login';
-import {View, Button, Alert} from 'react-native';
+import {
+  View,
+  Button,
+  Alert,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {
   setKakaoTokenAcc,
@@ -72,13 +79,22 @@ function KakaoLogin() {
   };
 
   return (
-    <View>
-      <Button title="Login" onPress={kakaoLogin} />
+    <View style={styles.container}>
+      <TouchableOpacity onPress={kakaoLogin}>
+        <Image source={require('../image/kakao_login_small.png')} />
+      </TouchableOpacity>
       <Button title="Logout" onPress={kakaoLogout} />
-      <Button title="Profile" onPress={getProfile} />
+      <Button title="KakaoProfile" onPress={getProfile} />
       <Button title="AccessToken" onPress={getAccessToken} />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default KakaoLogin;
