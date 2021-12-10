@@ -9,6 +9,9 @@ export const tokenSlice = createSlice({
     kakao_token_acc: '',
     kakao_token_ref: '',
     kakao_user_email: '',
+    naver_token_acc: '',
+    naver_token_ref: '',
+    naver_user_email: '',
   },
   reducers: {
     setLoginId: (state, action) => {
@@ -29,6 +32,15 @@ export const tokenSlice = createSlice({
     setKakaoUserEmail: (state, action) => {
       state.kakao_user_email = action.payload;
     },
+    setNaverTokenAcc: (state, action) => {
+      state.naver_token_acc = action.payload;
+    },
+    setNaverTokenRef: (state, action) => {
+      state.naver_token_ref = action.payload;
+    },
+    setNaverUserEmail: (state, action) => {
+      state.naver_user_email = action.payload;
+    },
   },
 });
 
@@ -39,6 +51,9 @@ export const {
   setKakaoTokenAcc,
   setKakaoTokenRef,
   setKakaoUserEmail,
+  setNaverTokenAcc,
+  setNaverTokenRef,
+  setNaverUserEmail,
 } = tokenSlice.actions;
 export default tokenSlice.reducer;
 export const selectLoginId = state => state.token.login_id;
@@ -47,3 +62,6 @@ export const selectTokenRef = state => state.token.token_ref;
 export const selectKakaoTokenAcc = state => state.token.kakao_token_acc;
 export const selectKakaoTokenRef = state => state.token.kakao_token_ref;
 export const selectKakaoUserEmail = state => state.token.kakao_user_email;
+export const selectNaverTokenAcc = state => state.token.naver_token_acc;
+export const selectNaverTokenRef = state => state.token.naver_token_ref;
+export const selectNaverUserEmail = state => state.token.naver_user_email;
