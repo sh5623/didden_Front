@@ -86,6 +86,12 @@ function Home() {
           navigation.navigate('kakaoLogin');
         }}
       />
+      <Button
+        title="Naver Login"
+        onPress={() => {
+          navigation.navigate('naverLogin');
+        }}
+      />
     </View>
   );
 }
