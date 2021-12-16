@@ -7,19 +7,21 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
+import {useSelector} from 'react-redux';
+import {selectTokenAcc} from './store/tokenReducer';
 import TourList from './tourlist';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 
-function GeneratorTour({navigation}) {
-  const route = useRoute();
+function GeneratorTour() {
   const reactNavigation = useNavigation();
   const [tours, setTours] = useState([]);
   const [tourNum, setTourNum] = useState(0);
   const [activityLoading, setActivityLoading] = useState(false);
+  const tokenAcc = useSelector(selectTokenAcc);
 
   useEffect(() => {
-    if (route.params.token_acc === '') {
+    if (tokenAcc === '') {
       Alert.alert('didden', '로그인이 필요합니다!');
       reactNavigation.navigate('login');
       return;

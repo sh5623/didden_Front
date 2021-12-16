@@ -44,6 +44,7 @@ function Login() {
         userPassword: inputLoginPwd,
       })
       .then(res => {
+        setActivityLoading(false);
         if (res.data.result === true) {
           axios.defaults.headers.common['Authorization'] =
             'Bearer ' + res.data.token_acc;
@@ -52,16 +53,14 @@ function Login() {
           dispatch(setTokenRef(res.data.token_ref));
           setTimeout(() => {
             navigation.navigate('home');
-          }, 1000);
+          }, 500);
         } else {
           Alert.alert('didden', res.data.error);
         }
       })
       .catch(error => {
-        alert(error.message);
-      })
-      .finally(() => {
         setActivityLoading(false);
+        alert(error.message);
       });
   };
 

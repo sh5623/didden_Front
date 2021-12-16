@@ -26,10 +26,13 @@ static void InitializeFlipper(UIApplication *application) {
 }
 #endif
 
+#import <GoogleMaps/GoogleMaps.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [GMSServices provideAPIKey:@"AIzaSyDAj0y1K3boel6zkUfG6DQv1Z7tfWMFhok"];
 #ifdef FB_SONARKIT_ENABLED
   InitializeFlipper(application);
 #endif
