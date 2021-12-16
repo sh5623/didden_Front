@@ -28,9 +28,7 @@ function Home() {
       <Button
         title="Go GeneratorTour"
         onPress={() => {
-          navigation.navigate('generatorTour', {
-            token_acc: tokenAcc,
-          });
+          navigation.navigate('generatorTour');
         }}
       />
       <Button
@@ -90,6 +88,12 @@ function Home() {
         title="Naver Login"
         onPress={() => {
           navigation.navigate('naverLogin');
+        }}
+      />
+      <Button
+        title="Google Maps"
+        onPress={() => {
+          navigation.navigate('googleMap');
         }}
       />
     </View>
