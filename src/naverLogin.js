@@ -1,13 +1,5 @@
-import React, {useState} from 'react';
-import {
-  View,
-  Button,
-  Alert,
-  StyleSheet,
-  Platform,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import React from 'react';
+import {Button, Alert, Platform, TouchableOpacity} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   setNaverTokenAcc,
@@ -19,6 +11,7 @@ import {
   NaverLogin,
   getProfile as NaverProfile,
 } from '@react-native-seoul/naver-login';
+import styled from 'styled-components/native';
 
 function NaverLoginComponents() {
   const dispatch = useDispatch();
@@ -82,28 +75,24 @@ function NaverLoginComponents() {
   };
 
   return (
-    <View style={styles.container}>
+    <ContainerView>
       <TouchableOpacity onPress={() => naverLogin(initials)}>
-        <Image
-          style={styles.loginImage}
-          source={require('../image/btnG_small.png')}
-        />
+        <LoginImage source={require('../image/btnG_small.png')} />
       </TouchableOpacity>
       <Button title="NaverLogout" onPress={naverLogout} />
       <Button title="NaverProfile" onPress={getNaverProfile} />
-    </View>
+    </ContainerView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  loginImage: {
-    width: 80,
-    height: 40,
-  },
-});
+const ContainerView = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
+
+const LoginImage = styled.Image`
+  width: 80px;
+  height: 40px;
+`;
 
 export default NaverLoginComponents;
