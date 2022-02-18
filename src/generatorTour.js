@@ -56,7 +56,7 @@ function GeneratorTour() {
       });
   };
 
-  onDetailView = tourDetail => {
+  /* onDetailView = tourDetail => {
     Alert.alert(
       `didden`,
       `지역 : ${tourDetail.지역}
@@ -66,7 +66,7 @@ function GeneratorTour() {
     중분류 : ${tourDetail.중분류}
     소분류 : ${tourDetail.소분류}`,
     );
-  };
+  }; */
 
   return (
     <View style={styles.generatorTour}>
@@ -85,7 +85,7 @@ function GeneratorTour() {
         />
       </View>
       <ScrollView style={{width: '100%'}}>
-        <TourList tours={tours} view={this.onDetailView} />
+        <TourList tours={tours} />
       </ScrollView>
     </View>
   );

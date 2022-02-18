@@ -20,6 +20,12 @@ function Home() {
         }}
       />
       <Button
+        title="Go SignUp"
+        onPress={() => {
+          navigation.navigate('signUp');
+        }}
+      />
+      <Button
         title="Go Generator"
         onPress={() => {
           navigation.navigate('generator');
