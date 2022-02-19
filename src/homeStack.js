@@ -24,6 +24,7 @@ import LogoComponent from './logo';
 import KakaoLogin from './kakaoLogin';
 import NaverLogin from './naverLogin';
 import GoogleMap from './googleMap';
+import UserCheck from './userCheck';
 
 const Stack = createNativeStackNavigator();
 
@@ -77,6 +78,8 @@ function HomeStack() {
       <Stack.Screen name="kakaoLogin" component={KakaoLogin} />
       <Stack.Screen name="naverLogin" component={NaverLogin} />
       <Stack.Screen name="googleMap" component={GoogleMap} />
+      <Stack.Screen name="userCheck" component={UserCheck} />
+
     </Stack.Navigator>
   );
 }
