@@ -11,6 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		6C264605EE5FD5416CAA15B2 /* libPods-didden.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5175FA48F98C9FC1C6961D72 /* libPods-didden.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A9A534BE2760323600BB9062 /* SwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A534BD2760323600BB9062 /* SwiftBridge.swift */; };
 		B5185383AAAB67DAB44C4353 /* libPods-didden.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E15B86E22549048D4B6D055 /* libPods-didden.a */; };
@@ -38,6 +39,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = didden/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = didden/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = didden/main.m; sourceTree = "<group>"; };
+		5175FA48F98C9FC1C6961D72 /* libPods-didden.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-didden.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A4DDD00CDF94861AF7C05C /* Pods-didden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-didden.debug.xcconfig"; path = "Target Support Files/Pods-didden/Pods-didden.debug.xcconfig"; sourceTree = "<group>"; };
 		7E15B86E22549048D4B6D055 /* libPods-didden.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-didden.a"; path = "/Users/ohjeung/Library/Developer/Xcode/DerivedData/didden-geilzhjfsfcqpheflwhvfbdarvnr/Build/Products/Debug-iphoneos/libPods-didden.a"; sourceTree = "<absolute>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = didden/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5185383AAAB67DAB44C4353 /* libPods-didden.a in Frameworks */,
+				6C264605EE5FD5416CAA15B2 /* libPods-didden.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +112,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				7E15B86E22549048D4B6D055 /* libPods-didden.a */,
 				A50864ABCD6DF0E3C67374F0 /* libPods-didden-diddenTests.a */,
+				5175FA48F98C9FC1C6961D72 /* libPods-didden.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
