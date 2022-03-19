@@ -25,6 +25,7 @@ import KakaoLogin from './kakaoLogin';
 import NaverLogin from './naverLogin';
 import GoogleMap from './googleMap';
 import UserCheck from './userCheck';
+import Announcement from './announcement';
 
 const Stack = createNativeStackNavigator();
 
@@ -66,7 +67,10 @@ function HomeStack() {
       <Stack.Screen name="modal" component={Modal} />
       <Stack.Screen name="generator" component={Generator} />
       <Stack.Screen name="generatorTour" component={GeneratorTour} />
-      <Stack.Screen name="generatorTourDetail" component={GeneratorTourDetail} />
+      <Stack.Screen
+        name="generatorTourDetail"
+        component={GeneratorTourDetail}
+      />
       <Stack.Screen name="picker" component={Picker} />
       <Stack.Screen name="input" component={Input} />
       <Stack.Screen name="imageLoader" component={ImageLoader} />
@@ -79,7 +83,7 @@ function HomeStack() {
       <Stack.Screen name="naverLogin" component={NaverLogin} />
       <Stack.Screen name="googleMap" component={GoogleMap} />
       <Stack.Screen name="userCheck" component={UserCheck} />
-
+      <Stack.Screen name="announcement" component={Announcement} />
     </Stack.Navigator>
   );
 }
