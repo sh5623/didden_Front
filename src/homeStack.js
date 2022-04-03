@@ -26,6 +26,7 @@ import NaverLogin from './naverLogin';
 import GoogleMap from './googleMap';
 import UserCheck from './userCheck';
 import Announcement from './announcement';
+import Example from './example';
 
 const Stack = createNativeStackNavigator();
 
@@ -84,6 +85,7 @@ function HomeStack() {
       <Stack.Screen name="googleMap" component={GoogleMap} />
       <Stack.Screen name="userCheck" component={UserCheck} />
       <Stack.Screen name="announcement" component={Announcement} />
+      <Stack.Screen name="example" component={Example} />
     </Stack.Navigator>
   );
 }

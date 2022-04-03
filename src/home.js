@@ -102,6 +102,12 @@ function Home() {
           navigation.navigate('googleMap');
         }}
       />
+      <Button
+        title="Example"
+        onPress={() => {
+          navigation.navigate('example');
+        }}
+      />
     </View>
   );
 }
