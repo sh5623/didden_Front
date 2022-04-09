@@ -339,6 +339,8 @@ PODS:
     - glog
   - react-native-contacts (7.0.2):
     - React-Core
+  - react-native-geolocation-service (5.3.0-beta.4):
+    - React
   - react-native-google-maps (0.29.4):
     - Google-Maps-iOS-Utils (= 2.1.0)
     - GoogleMaps (= 3.5.0)
@@ -502,6 +504,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-contacts (from `../node_modules/react-native-contacts`)
+  - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
   - react-native-google-maps (from `../node_modules/react-native-maps`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-maps (from `../node_modules/react-native-maps`)
@@ -595,6 +598,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-contacts:
     :path: "../node_modules/react-native-contacts"
+  react-native-geolocation-service:
+    :path: "../node_modules/react-native-geolocation-service"
   react-native-google-maps:
     :path: "../node_modules/react-native-maps"
   react-native-image-picker:
@@ -688,6 +693,7 @@ SPEC CHECKSUMS:
   React-jsinspector: d9c8eb0b53f0da206fed56612b289fec84991157
   React-logger: e522e76fa3e9ec3e7d7115b49485cc065cf4ae06
   react-native-contacts: bc424db19c3384e44e6a9d9da9a78ee51b0aa7a1
+  react-native-geolocation-service: c0efb872258ed9240f1003a70fca9e9757e5c785
   react-native-google-maps: 34517207071d54f3bc23c68752bbec0217bfc79e
   react-native-image-picker: 1dbc397ab78be161bf08bc4f3ad9c39bec12be11
   react-native-maps: a421fe6aeb74279597c4ea9598f25796108e2d89
