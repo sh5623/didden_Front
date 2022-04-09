@@ -68,7 +68,7 @@ function NaverLoginComponents() {
 
   naverLogout = () => {
     const logoutResult = NaverLogin.logout();
-    Alert.alert('로그아웃', '성공적으로 로그아웃 되었습니다..');
+    Alert.alert('로그아웃', '성공적으로 로그아웃 되었습니다.');
 
     dispatch(setNaverTokenAcc(''));
     dispatch(setNaverTokenRef(''));
