@@ -19,14 +19,14 @@ function Login() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  onChangeLoginId = event => {
+  const onChangeLoginId = event => {
     setInputLoginId(event);
   };
-  onChangeLoginPwd = event => {
+  const onChangeLoginPwd = event => {
     setInputLoginPwd(event);
   };
 
-  onLogin = async () => {
+  const onLogin = async () => {
     if (inputLoginId === '') {
       Alert.alert('didden', 'ID를 입력해 주세요!');
       return;
@@ -70,7 +70,7 @@ function Login() {
         <TextInput
           value={inputLoginId}
           style={styles.input}
-          onChangeText={this.onChangeLoginId}
+          onChangeText={onChangeLoginId}
           autoCapitalize={'none'}
           placeholder={'ID'}
           autoFocus={true}
@@ -81,7 +81,7 @@ function Login() {
         <TextInput
           value={inputLoginPwd}
           style={styles.input}
-          onChangeText={this.onChangeLoginPwd}
+          onChangeText={onChangeLoginPwd}
           autoCapitalize={'none'}
           placeholder={'Password'}
           secureTextEntry={true}
@@ -97,7 +97,7 @@ function Login() {
         />
       </View>
 
-      <Button title="Login" onPress={this.onLogin} />
+      <Button title="Login" onPress={onLogin} />
     </View>
   );
 }
