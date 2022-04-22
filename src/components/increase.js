@@ -7,7 +7,7 @@ import {
   incrementByAmount,
   setByAmount,
   selectCount,
-} from './store/counterReducer';
+} from '../store/counterReducer';
 
 function Increase() {
   const count = useSelector(selectCount);

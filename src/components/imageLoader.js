@@ -53,10 +53,21 @@ function ImageLoader() {
           imageList.map(image => (
             <TouchableWithoutFeedback
               onPress={() => {
-                Alert.alert(
-                  'didden',
-                  `Fild Id : ${image.galContentId}, File Name : ${image.galTitle}`,
-                );
+                // Alert.alert(
+                //   'didden',
+                //   `Fild Id : ${image.galContentId}, File Name : ${image.galTitle}`,
+                // );
+                axios
+                  .post(`http://146.56.155.91:8080/tour/api/info/detail`, {
+                    contentId: '126508',
+                    contentTypeId: '',
+                  })
+                  .then(response => {
+                    console.warn(response);
+                  })
+                  .catch(error => {
+                    Alert.alert('error', error.message);
+                  });
               }}
               key={image.galContentId}>
               <Image

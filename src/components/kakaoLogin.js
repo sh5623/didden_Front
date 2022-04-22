@@ -13,7 +13,7 @@ import {
   setKakaoTokenAcc,
   setKakaoTokenRef,
   setKakaoUserEmail,
-} from './store/tokenReducer';
+} from '../store/tokenReducer';
 
 function KakaoLogin() {
   const dispatch = useDispatch();
@@ -81,7 +81,7 @@ function KakaoLogin() {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={kakaoLogin}>
-        <Image source={require('../image/kakao_login_small.png')} />
+        <Image source={require('../../image/kakao_login_small.png')} />
       </TouchableOpacity>
       <Button title="Logout" onPress={kakaoLogout} />
       <Button title="KakaoProfile" onPress={getProfile} />

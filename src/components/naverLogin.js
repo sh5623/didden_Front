@@ -6,7 +6,7 @@ import {
   setNaverTokenRef,
   setNaverUserEmail,
   selectNaverTokenAcc,
-} from './store/tokenReducer';
+} from '../store/tokenReducer';
 import {
   NaverLogin,
   getProfile as NaverProfile,
@@ -77,7 +77,7 @@ function NaverLoginComponents() {
   return (
     <ContainerView>
       <TouchableOpacity onPress={() => naverLogin(initials)}>
-        <LoginImage source={require('../image/btnG_small.png')} />
+        <LoginImage source={require('../../image/btnG_small.png')} />
       </TouchableOpacity>
       <Button title="NaverLogout" onPress={naverLogout} />
       <Button title="NaverProfile" onPress={getNaverProfile} />
