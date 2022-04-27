@@ -6,7 +6,7 @@ import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 function ImagePickerComponent() {
   const [avatar, setAvatar] = useState('');
 
-  addImage = () => {
+  const addImage = () => {
     launchImageLibrary({}, response => {
       if (!response.didCancel) {
         setAvatar(response.assets[0].uri);
@@ -16,11 +16,7 @@ function ImagePickerComponent() {
 
   return (
     <View style={{width: '100%', alignItems: 'center'}}>
-      <Image
-        source={{uri: avatar}}
-        style={styles.avatar}
-        accessibilityLabel="Select Image"
-      />
+      <Image source={{uri: avatar}} style={styles.avatar} accessibilityLabel="Select Image" />
       <Button title="Add an Image" onPress={() => this.addImage()} />
     </View>
   );

@@ -3,10 +3,7 @@ import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 function NumList({nums, deleteFn}) {
   return nums.map((num, index) => (
-    <TouchableOpacity
-      style={styles.numList}
-      key={index}
-      onPress={() => deleteFn(index)}>
+    <TouchableOpacity style={styles.numList} key={index} onPress={() => deleteFn(index)}>
       <Text>{num}</Text>
     </TouchableOpacity>
   ));

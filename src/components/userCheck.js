@@ -1,11 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  TextInput,
-} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, TextInput} from 'react-native';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
@@ -13,11 +7,11 @@ function UserCheck() {
   const [userCheckId, setUserCheckId] = useState('');
   const [userCheckPw, setUserCheckPw] = useState('');
 
-  onChangeUserCheckId = event => {
+  const onChangeUserCheckId = event => {
     setUserCheckId(event);
   };
 
-  onChangeUserCheckPw = event => {
+  const onChangeUserCheckPw = event => {
     setUserCheckPw(event);
   };
 

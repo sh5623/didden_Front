@@ -2,11 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Alert, TouchableWithoutFeedback, Image} from 'react-native';
 import {useSelector} from 'react-redux';
-import {
-  selectTokenAcc,
-  selectTokenRef,
-  selectKakaoUserEmail,
-} from './store/tokenReducer';
+import {selectTokenAcc, selectTokenRef, selectKakaoUserEmail} from './store/tokenReducer';
 import Home from './home';
 import Modal from './components/modal';
 import Generator from './components/generator';
@@ -38,9 +34,7 @@ function HomeStack() {
       initialRouteName="home"
       screenOptions={{
         title: '',
-        headerTitle: () => (
-          <LogoComponent tokenAcc={tokenAcc} tokenRef={tokenRef} />
-        ),
+        headerTitle: () => <LogoComponent tokenAcc={tokenAcc} tokenRef={tokenRef} />,
         headerStyle: {
           backgroundColor: 'lavender',
         },
@@ -53,10 +47,7 @@ function HomeStack() {
             onPress={() => {
               Alert.alert('didden', `Hi! ${userEmail}`);
             }}>
-            <Image
-              style={{width: 25, height: 25}}
-              source={require('../image/info.png')}
-            />
+            <Image style={{width: 25, height: 25}} source={require('../image/info.png')} />
           </TouchableWithoutFeedback>
         ),
       }}>

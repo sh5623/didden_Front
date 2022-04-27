@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
-import React, {useState, useEffect} from 'react';
-import {View, Button, Text, StyleSheet, Animated, Easing} from 'react-native';
+import React, {useState} from 'react';
+import {View, Button, Text, StyleSheet, Animated} from 'react-native';
 
 function AnimationComponent() {
   const [lavenderSquare, setLavenderSquare] = useState(new Animated.Value(1));
@@ -8,7 +8,7 @@ function AnimationComponent() {
   const [greenSquare, setGreenSquare] = useState(new Animated.ValueXY(0, 0));
   const [blueSquare, setBlueSquare] = useState(new Animated.ValueXY(0, 0));
 
-  runAnimation = () => {
+  const runAnimation = () => {
     Animated.sequence([
       Animated.timing(lavenderSquare, {
         toValue: 0,
@@ -35,7 +35,7 @@ function AnimationComponent() {
     ]).start();
   };
 
-  resetAnimation = () => {
+  const resetAnimation = () => {
     lavenderSquare.setValue(1);
     redSquare.setValue(1);
     greenSquare.setValue({x: 0, y: 0});

@@ -1,22 +1,15 @@
 import React, {useState} from 'react';
-import {
-  ScrollView,
-  TextInput,
-  Button,
-  Text,
-  Alert,
-  StyleSheet,
-} from 'react-native';
+import {ScrollView, TextInput, Button, Text, Alert, StyleSheet} from 'react-native';
 
 function InputComponent() {
   const [myTextInput, setMyTextInput] = useState('');
   const [alphabet, setAlphabet] = useState([]);
 
-  onChangeInput = event => {
+  const nChangeInput = event => {
     setMyTextInput(event);
   };
 
-  onAddTextInput = () => {
+  const onAddTextInput = () => {
     if (myTextInput === '') {
       Alert.alert('didden', '내용을 입력해 주세요!');
       return;
@@ -28,12 +21,7 @@ function InputComponent() {
 
   return (
     <ScrollView style={{width: '100%', maxHeight: 300}}>
-      <TextInput
-        value={myTextInput}
-        style={styles.input}
-        onChangeText={this.onChangeInput}
-        autoCapitalize={'none'}
-      />
+      <TextInput value={myTextInput} style={styles.input} onChangeText={this.onChangeInput} autoCapitalize={'none'} />
       <Button title="Add Text Input" onPress={this.onAddTextInput} />
       <ScrollView style={{width: '100%'}}>
         {alphabet.map((word, index) => (

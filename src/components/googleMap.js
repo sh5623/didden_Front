@@ -4,7 +4,7 @@ import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 
-requestPermission = async () => {
+const requestPermission = async () => {
   try {
     if (Platform.OS === 'ios') {
       return await Geolocation.requestAuthorization('always');

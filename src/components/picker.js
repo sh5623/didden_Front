@@ -30,10 +30,7 @@ function PickerComponent() {
       />
       <Text style={styles.input}>{value}</Text>
 
-      <Picker
-        style={{height: 50, width: 250}}
-        selectedValue={country}
-        onValueChange={(val, index) => setCountry(val)}>
+      <Picker style={{height: 50, width: 250}} selectedValue={country} onValueChange={(val, index) => setCountry(val)}>
         <Picker.Item label="Korea" value="korea" />
         <Picker.Item label="USA" value="usa" />
         <Picker.Item label="Canada" value="canada" />

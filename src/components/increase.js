@@ -1,13 +1,7 @@
 import React, {useRef} from 'react';
 import {View, Button, Text, TextInput, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  increment,
-  decrement,
-  incrementByAmount,
-  setByAmount,
-  selectCount,
-} from '../store/counterReducer';
+import {increment, decrement, incrementByAmount, setByAmount, selectCount} from '../store/counterReducer';
 
 function Increase() {
   const count = useSelector(selectCount);

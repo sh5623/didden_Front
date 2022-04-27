@@ -1,12 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Button,
-  StyleSheet,
-  TextInput,
-  Alert,
-  ActivityIndicator,
-} from 'react-native';
+import {View, Button, StyleSheet, TextInput, Alert, ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import axios from 'axios';
@@ -117,12 +110,7 @@ function Signup() {
       </View>
 
       <View>
-        <ActivityIndicator
-          style={styles.loading}
-          animating={activityLoading}
-          size="large"
-          color="#BFA0ED"
-        />
+        <ActivityIndicator style={styles.loading} animating={activityLoading} size="large" color="#BFA0ED" />
       </View>
 
       <Button title="회원가입" onPress={onJoinMember} />
