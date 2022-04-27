@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {View, Button, StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
@@ -8,7 +8,7 @@ import Header from '../src/header';
 function Home() {
   const tokenAcc = useSelector(selectTokenAcc);
   const navigation = useNavigation();
-  const [appName, setAppName] = useState('.didden');
+  const appName = '.didden';
 
   return (
     <View style={styles.home}>

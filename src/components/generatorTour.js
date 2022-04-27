@@ -8,7 +8,7 @@ import {
   Alert,
 } from 'react-native';
 import {useSelector} from 'react-redux';
-import {selectTokenAcc} from './store/tokenReducer';
+import {selectTokenAcc} from '../store/tokenReducer';
 import TourList from './tourlist';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
@@ -28,7 +28,7 @@ function GeneratorTour() {
     }
   }, []);
 
-  onAddTours = async () => {
+  const onAddTours = async () => {
     setActivityLoading(true);
     await axios
       .get(`http://146.56.155.91:8080/tour/api/info`)

@@ -8,23 +8,23 @@ import {
   selectKakaoUserEmail,
 } from './store/tokenReducer';
 import Home from './home';
-import Modal from './modal';
-import Generator from './generator';
-import GeneratorTour from './generatorTour';
-import GeneratorTourDetail from './generatorTourDetail';
-import Picker from './picker';
-import Input from './input';
-import ImageLoader from './imageLoader';
-import ImagePicker from './imagePicker';
-import Animation from './animation';
-import Increase from './increase';
-import Signup from './signup';
-import Login from './login';
+import Modal from './components/modal';
+import Generator from './components/generator';
+import GeneratorTour from './components/generatorTour';
+import GeneratorTourDetail from './components/generatorTourDetail';
+import Picker from './components/picker';
+import Input from './components/input';
+import ImageLoader from './components/imageLoader';
+import ImagePicker from './components/imagePicker';
+import Animation from './components/animation';
+import Increase from './components/increase';
+import Signup from './components/signup';
+import Login from './components/login';
 import LogoComponent from './logo';
-import KakaoLogin from './kakaoLogin';
-import NaverLogin from './naverLogin';
-import GoogleMap from './googleMap';
-import UserCheck from './userCheck';
+import KakaoLogin from './components/kakaoLogin';
+import NaverLogin from './components/naverLogin';
+import GoogleMap from './components/googleMap';
+import UserCheck from './components/userCheck';
 
 const Stack = createNativeStackNavigator();
 
@@ -66,7 +66,10 @@ function HomeStack() {
       <Stack.Screen name="modal" component={Modal} />
       <Stack.Screen name="generator" component={Generator} />
       <Stack.Screen name="generatorTour" component={GeneratorTour} />
-      <Stack.Screen name="generatorTourDetail" component={GeneratorTourDetail} />
+      <Stack.Screen
+        name="generatorTourDetail"
+        component={GeneratorTourDetail}
+      />
       <Stack.Screen name="picker" component={Picker} />
       <Stack.Screen name="input" component={Input} />
       <Stack.Screen name="imageLoader" component={ImageLoader} />
@@ -79,7 +82,6 @@ function HomeStack() {
       <Stack.Screen name="naverLogin" component={NaverLogin} />
       <Stack.Screen name="googleMap" component={GoogleMap} />
       <Stack.Screen name="userCheck" component={UserCheck} />
-
     </Stack.Navigator>
   );
 }

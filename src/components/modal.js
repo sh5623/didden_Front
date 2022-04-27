@@ -10,12 +10,12 @@ import {
   TouchableWithoutFeedback,
   Alert,
 } from 'react-native';
-import Flower from '../image/LDW_0695.jpg';
+import Flower from '../../image/LDW_0695.jpg';
 
 function ModalComponent() {
   const [modal, setModal] = useState(false);
 
-  handleModal = () => {
+  const handleModal = () => {
     setModal(modal ? false : true);
   };
 

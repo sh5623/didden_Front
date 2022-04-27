@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
-import {setTokenAcc, setTokenRef, setLoginId} from './store/tokenReducer';
+import {setTokenAcc, setTokenRef, setLoginId} from '../store/tokenReducer';
 import axios from 'axios';
 
 function Login() {
@@ -19,14 +19,14 @@ function Login() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  onChangeLoginId = event => {
+  const onChangeLoginId = event => {
     setInputLoginId(event);
   };
-  onChangeLoginPwd = event => {
+  const onChangeLoginPwd = event => {
     setInputLoginPwd(event);
   };
 
-  onLogin = async () => {
+  const onLogin = async () => {
     if (inputLoginId === '') {
       Alert.alert('didden', 'ID를 입력해 주세요!');
       return;

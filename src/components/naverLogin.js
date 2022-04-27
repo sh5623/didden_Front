@@ -6,7 +6,7 @@ import {
   setNaverTokenRef,
   setNaverUserEmail,
   selectNaverTokenAcc,
-} from './store/tokenReducer';
+} from '../store/tokenReducer';
 import {
   NaverLogin,
   getProfile as NaverProfile,
@@ -32,7 +32,7 @@ function NaverLoginComponents() {
   const initials = Platform.OS === 'ios' ? iosKeys : androidKeys;
   const naverAccessToken = useSelector(selectNaverTokenAcc);
 
-  naverLogin = props => {
+  const naverLogin = props => {
     return new Promise((resolve, reject) => {
       NaverLogin.login(props, (err, token) => {
         if (err) {
@@ -51,7 +51,7 @@ function NaverLoginComponents() {
     });
   };
 
-  getNaverProfile = async () => {
+  const getNaverProfile = async () => {
     const profileResult = await NaverProfile(naverAccessToken);
     if (profileResult.resultcode === '024') {
       Alert.alert('로그인 실패', profileResult.message);
@@ -66,7 +66,7 @@ function NaverLoginComponents() {
     Alert.alert('profileResult', JSON.stringify(profileResult));
   };
 
-  naverLogout = () => {
+  const naverLogout = () => {
     const logoutResult = NaverLogin.logout();
     Alert.alert('로그아웃', '성공적으로 로그아웃 되었습니다.');
 
@@ -77,7 +77,7 @@ function NaverLoginComponents() {
   return (
     <ContainerView>
       <TouchableOpacity onPress={() => naverLogin(initials)}>
-        <LoginImage source={require('../image/btnG_small.png')} />
+        <LoginImage source={require('../../image/btnG_small.png')} />
       </TouchableOpacity>
       <Button title="NaverLogout" onPress={naverLogout} />
       <Button title="NaverProfile" onPress={getNaverProfile} />
