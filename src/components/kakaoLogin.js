@@ -13,13 +13,13 @@ import {
   setKakaoTokenAcc,
   setKakaoTokenRef,
   setKakaoUserEmail,
-} from './store/tokenReducer';
+} from '../store/tokenReducer';
 
 function KakaoLogin() {
   const dispatch = useDispatch();
 
   // 카카오 로그인 시작.
-  kakaoLogin = () => {
+  const kakaoLogin = () => {
     KakaoLogins.login()
       .then(result => {
         Alert.alert('didden', JSON.stringify(result));
@@ -46,7 +46,7 @@ function KakaoLogin() {
   };
 
   // 카카카오 로그아웃
-  kakaoLogout = () => {
+  const kakaoLogout = () => {
     KakaoLogins.logout()
       .then(result => {
         Alert.alert('didden', JSON.stringify(result));
@@ -57,7 +57,7 @@ function KakaoLogin() {
   };
 
   // 로그인 후 내 프로필 가져오기.
-  getProfile = () => {
+  const getProfile = () => {
     KakaoLogins.getProfile()
       .then(result => {
         Alert.alert('didden', JSON.stringify(result));
@@ -68,7 +68,7 @@ function KakaoLogin() {
   };
 
   // 액세스 토큰 조회
-  getAccessToken = () => {
+  const getAccessToken = () => {
     KakaoLogins.getAccessToken()
       .then(result => {
         Alert.alert('didden', JSON.stringify(result));
@@ -81,7 +81,7 @@ function KakaoLogin() {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={kakaoLogin}>
-        <Image source={require('../image/kakao_login_small.png')} />
+        <Image source={require('../../image/kakao_login_small.png')} />
       </TouchableOpacity>
       <Button title="Logout" onPress={kakaoLogout} />
       <Button title="KakaoProfile" onPress={getProfile} />

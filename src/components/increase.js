@@ -7,14 +7,14 @@ import {
   incrementByAmount,
   setByAmount,
   selectCount,
-} from './store/counterReducer';
+} from '../store/counterReducer';
 
 function Increase() {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
   const inputNums = useRef();
 
-  onChangeCount = event => {
+  const onChangeCount = event => {
     let newText = '';
     let numbers = '0123456789';
 
