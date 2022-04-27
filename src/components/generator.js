@@ -5,12 +5,12 @@ import NumList from './numlist';
 function Generator() {
   const [random, setRandom] = useState([]);
 
-  onAddRandomNum = async () => {
+  const onAddRandomNum = async () => {
     const randomNum = Math.floor(Math.random() * 100) + 1;
     setRandom(current => [...random, randomNum]);
   };
 
-  onNumDelete = position => {
+  const onNumDelete = position => {
     const newArray = random.filter((num, index) => {
       return position != index;
     });

@@ -1,16 +1,8 @@
 import React from 'react';
 import {Button, Alert, Platform, TouchableOpacity} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  setNaverTokenAcc,
-  setNaverTokenRef,
-  setNaverUserEmail,
-  selectNaverTokenAcc,
-} from '../store/tokenReducer';
-import {
-  NaverLogin,
-  getProfile as NaverProfile,
-} from '@react-native-seoul/naver-login';
+import {setNaverTokenAcc, setNaverTokenRef, setNaverUserEmail, selectNaverTokenAcc} from '../store/tokenReducer';
+import {NaverLogin, getProfile as NaverProfile} from '@react-native-seoul/naver-login';
 import styled from 'styled-components/native';
 
 function NaverLoginComponents() {
@@ -58,11 +50,7 @@ function NaverLoginComponents() {
       return;
     }
 
-    dispatch(
-      setNaverUserEmail(
-        JSON.stringify(profileResult.response.email).replace(/\"/g, ''),
-      ),
-    );
+    dispatch(setNaverUserEmail(JSON.stringify(profileResult.response.email).replace(/\"/g, '')));
     Alert.alert('profileResult', JSON.stringify(profileResult));
   };
 

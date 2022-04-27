@@ -1,19 +1,8 @@
 import React, {useState} from 'react';
 import * as KakaoLogins from '@react-native-seoul/kakao-login';
-import {
-  View,
-  Button,
-  Alert,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-} from 'react-native';
+import {View, Button, Alert, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {
-  setKakaoTokenAcc,
-  setKakaoTokenRef,
-  setKakaoUserEmail,
-} from '../store/tokenReducer';
+import {setKakaoTokenAcc, setKakaoTokenRef, setKakaoUserEmail} from '../store/tokenReducer';
 
 function KakaoLogin() {
   const dispatch = useDispatch();
@@ -23,21 +12,11 @@ function KakaoLogin() {
     KakaoLogins.login()
       .then(result => {
         Alert.alert('didden', JSON.stringify(result));
-        dispatch(
-          setKakaoTokenAcc(
-            JSON.stringify(result.accessToken).replace(/\"/g, ''),
-          ),
-        );
-        dispatch(
-          setKakaoTokenRef(
-            JSON.stringify(result.refreshToken).replace(/\"/g, ''),
-          ),
-        );
+        dispatch(setKakaoTokenAcc(JSON.stringify(result.accessToken).replace(/\"/g, '')));
+        dispatch(setKakaoTokenRef(JSON.stringify(result.refreshToken).replace(/\"/g, '')));
 
         KakaoLogins.getProfile().then(result => {
-          dispatch(
-            setKakaoUserEmail(JSON.stringify(result.email).replace(/\"/g, '')),
-          );
+          dispatch(setKakaoUserEmail(JSON.stringify(result.email).replace(/\"/g, '')));
         });
       })
       .catch(error => {

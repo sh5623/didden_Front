@@ -1,10 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import {
-  selectLoginId,
-  selectKakaoUserEmail,
-  selectNaverUserEmail,
-} from './store/tokenReducer';
+import {selectLoginId, selectKakaoUserEmail, selectNaverUserEmail} from './store/tokenReducer';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
