@@ -41,7 +41,7 @@ function Home() {
           alignItems: 'center',
           height: 500,
         }}>
-        <Header name={appName} tokenAcc={tokenAcc} />
+        <Header tokenAcc={tokenAcc} />
 
         {loadingMainImages ? (
           <SliderBox

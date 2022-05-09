@@ -43,11 +43,9 @@ function App() {
         initialRouteName="homeStack"
         screenOptions={({route}) => ({
           title: '.didden',
-          headerTitle: () => (
-            <LogoComponent tokenAcc={tokenAcc} tokenRef={tokenRef} />
-          ),
+          headerTitle: () => <LogoComponent tokenAcc={tokenAcc} tokenRef={tokenRef} />,
           headerStyle: {
-            backgroundColor: 'lavender',
+            backgroundColor: '#7351F1',
           },
           headerTitleStyle: {
             fontWeight: 'bold',
@@ -58,14 +56,11 @@ function App() {
               onPress={() => {
                 Alert.alert('didden', 'Hi, we are didden!');
               }}>
-              <Image
-                style={{width: 25, height: 25, marginRight: 15}}
-                source={require('./image/info.png')}
-              />
+              <Image style={{width: 25, height: 25, marginRight: 15}} source={require('./image/info.png')} />
             </TouchableWithoutFeedback>
           ),
           tabBarActiveTintColor: 'purple',
-          tabBarInactiveTintColor: 'lavender',
+          tabBarInactiveTintColor: '#7351F1',
           tabBarIcon: ({focused}) => TabBarIcon(focused, route.name),
         })}>
         <Tab.Screen

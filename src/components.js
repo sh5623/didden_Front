@@ -12,7 +12,7 @@ function Home() {
 
   return (
     <View style={styles.home}>
-      <Header name={appName} tokenAcc={tokenAcc} />
+      <Header tokenAcc={tokenAcc} />
       <Button
         title="Go Login"
         onPress={() => {
