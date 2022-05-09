@@ -36,7 +36,7 @@ function HomeStack() {
         title: '',
         headerTitle: () => <LogoComponent tokenAcc={tokenAcc} tokenRef={tokenRef} />,
         headerStyle: {
-          backgroundColor: 'lavender',
+          backgroundColor: '#7351F1',
         },
         headerTitleStyle: {
           fontWeight: 'bold',

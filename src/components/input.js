@@ -37,11 +37,11 @@ function InputComponent() {
 const styles = StyleSheet.create({
   input: {
     width: '100%',
-    backgroundColor: 'lavender',
+    backgroundColor: '#7351F1',
     marginTop: 20,
   },
   mainText: {
-    backgroundColor: 'lavender',
+    backgroundColor: '#7351F1',
     marginTop: 10,
     alignItems: 'center',
     padding: 5,
