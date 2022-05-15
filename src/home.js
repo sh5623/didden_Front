@@ -53,7 +53,7 @@ function Home() {
             circleLoop={true} // 이미지 반복
             imageLoadingColor="purple" // 이미지 로딩 색상
             style={styles.image}
-            autoplayInterval={1000 * 7} // 이미지 넘기는 속도
+            autoplayInterval={1000 * 8} // 이미지 넘기는 속도
           />
         ) : (
           <View></View>
