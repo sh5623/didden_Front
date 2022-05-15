@@ -7,6 +7,7 @@ import Home from './home';
 import Modal from './components/modal';
 import Generator from './components/generator';
 import GeneratorTour from './components/generatorTour';
+import GeneratorTourDetail from './components/generatorTourDetail';
 import Picker from './components/picker';
 import Input from './components/input';
 import ImageLoader from './components/imageLoader';
@@ -55,6 +56,7 @@ function HomeStack() {
       <Stack.Screen name="modal" component={Modal} />
       <Stack.Screen name="generator" component={Generator} />
       <Stack.Screen name="generatorTour" component={GeneratorTour} />
+      <Stack.Screen name="generatorTourDetail" component={GeneratorTourDetail} />
       <Stack.Screen name="picker" component={Picker} />
       <Stack.Screen name="input" component={Input} />
       <Stack.Screen name="imageLoader" component={ImageLoader} />
