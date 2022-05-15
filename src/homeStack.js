@@ -2,31 +2,23 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Alert, TouchableWithoutFeedback, Image} from 'react-native';
 import {useSelector} from 'react-redux';
-import {
-  selectTokenAcc,
-  selectTokenRef,
-  selectKakaoUserEmail,
-} from './store/tokenReducer';
+import {selectTokenAcc, selectTokenRef, selectKakaoUserEmail} from './store/tokenReducer';
 import Home from './home';
-import Modal from './modal';
-import Generator from './generator';
-import GeneratorTour from './generatorTour';
-import GeneratorTourDetail from './generatorTourDetail';
-import Picker from './picker';
-import Input from './input';
-import ImageLoader from './imageLoader';
-import ImagePicker from './imagePicker';
-import Animation from './animation';
-import Increase from './increase';
-import Signup from './signup';
-import Login from './login';
+import Modal from './components/modal';
+import Generator from './components/generator';
+import GeneratorTour from './components/generatorTour';
+import Picker from './components/picker';
+import Input from './components/input';
+import ImageLoader from './components/imageLoader';
+import ImagePicker from './components/imagePicker';
+import Animation from './components/animation';
+import Increase from './components/increase';
+import Login from './components/login';
 import LogoComponent from './logo';
-import KakaoLogin from './kakaoLogin';
-import NaverLogin from './naverLogin';
-import GoogleMap from './googleMap';
-import UserCheck from './userCheck';
-import Announcement from './announcement';
-import Example from './example';
+import KakaoLogin from './components/kakaoLogin';
+import NaverLogin from './components/naverLogin';
+import GoogleMap from './components/googleMap';
+import Components from './components';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,11 +34,9 @@ function HomeStack() {
       initialRouteName="home"
       screenOptions={{
         title: '',
-        headerTitle: () => (
-          <LogoComponent tokenAcc={tokenAcc} tokenRef={tokenRef} />
-        ),
+        headerTitle: () => <LogoComponent tokenAcc={tokenAcc} tokenRef={tokenRef} />,
         headerStyle: {
-          backgroundColor: 'lavender',
+          backgroundColor: '#7351F1',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
@@ -57,10 +47,7 @@ function HomeStack() {
             onPress={() => {
               Alert.alert('didden', `Hi! ${userEmail}`);
             }}>
-            <Image
-              style={{width: 25, height: 25}}
-              source={require('../image/info.png')}
-            />
+            <Image style={{width: 25, height: 25}} source={require('../image/info.png')} />
           </TouchableWithoutFeedback>
         ),
       }}>
@@ -68,24 +55,17 @@ function HomeStack() {
       <Stack.Screen name="modal" component={Modal} />
       <Stack.Screen name="generator" component={Generator} />
       <Stack.Screen name="generatorTour" component={GeneratorTour} />
-      <Stack.Screen
-        name="generatorTourDetail"
-        component={GeneratorTourDetail}
-      />
       <Stack.Screen name="picker" component={Picker} />
       <Stack.Screen name="input" component={Input} />
       <Stack.Screen name="imageLoader" component={ImageLoader} />
       <Stack.Screen name="imagePicker" component={ImagePicker} />
       <Stack.Screen name="animation" component={Animation} />
-      <Stack.Screen name="signUp" component={Signup} />
       <Stack.Screen name="login" component={Login} />
       <Stack.Screen name="increase" component={Increase} />
       <Stack.Screen name="kakaoLogin" component={KakaoLogin} />
       <Stack.Screen name="naverLogin" component={NaverLogin} />
       <Stack.Screen name="googleMap" component={GoogleMap} />
-      <Stack.Screen name="userCheck" component={UserCheck} />
-      <Stack.Screen name="announcement" component={Announcement} />
-      <Stack.Screen name="example" component={Example} />
+      <Stack.Screen name="components" component={Components} />
     </Stack.Navigator>
   );
 }

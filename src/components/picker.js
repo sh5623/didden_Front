@@ -4,7 +4,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import Slider from '@react-native-community/slider';
 import {useDispatch, useSelector} from 'react-redux';
-import {setByAmount, selectCount} from './store/counterReducer';
+import {setByAmount, selectCount} from '../store/counterReducer';
 
 function PickerComponent() {
   const route = useRoute();
@@ -13,7 +13,7 @@ function PickerComponent() {
   const value = useSelector(selectCount);
   const dispatch = useDispatch();
 
-  sliderValueChange = value => {
+  const sliderValueChange = value => {
     //setValue(value);
     dispatch(setByAmount(value));
   };
@@ -30,10 +30,7 @@ function PickerComponent() {
       />
       <Text style={styles.input}>{value}</Text>
 
-      <Picker
-        style={{height: 50, width: 250}}
-        selectedValue={country}
-        onValueChange={(val, index) => setCountry(val)}>
+      <Picker style={{height: 50, width: 250}} selectedValue={country} onValueChange={(val, index) => setCountry(val)}>
         <Picker.Item label="Korea" value="korea" />
         <Picker.Item label="USA" value="usa" />
         <Picker.Item label="Canada" value="canada" />

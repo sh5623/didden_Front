@@ -1,15 +1,7 @@
 import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
 import {useRoute, useNavigation} from '@react-navigation/native';
-import {
-  View,
-  Image,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  Alert,
-  ScrollView,
-  ActivityIndicator,
-} from 'react-native';
+import {View, Image, StyleSheet, TouchableWithoutFeedback, Alert, ScrollView, ActivityIndicator} from 'react-native';
 import axios from 'axios';
 //import GridImageView from 'react-native-grid-image-viewer';
 
@@ -53,17 +45,10 @@ function ImageLoader() {
           imageList.map(image => (
             <TouchableWithoutFeedback
               onPress={() => {
-                Alert.alert(
-                  'didden',
-                  `Fild Id : ${image.galContentId}, File Name : ${image.galTitle}`,
-                );
+                Alert.alert('didden', `Fild Id : ${image.galContentId}, File Name : ${image.galTitle}`);
               }}
               key={image.galContentId}>
-              <Image
-                source={{uri: image.galWebImageUrl}}
-                style={styles.image}
-                resizeMode="cover"
-              />
+              <Image source={{uri: image.galWebImageUrl}} style={styles.image} resizeMode="cover" />
             </TouchableWithoutFeedback>
           ))
         ) : (
@@ -73,12 +58,7 @@ function ImageLoader() {
           //   })}
           // />
           <View>
-            <ActivityIndicator
-              style={styles.loading}
-              animating={activityLoading}
-              size="large"
-              color="purple"
-            />
+            <ActivityIndicator style={styles.loading} animating={activityLoading} size="large" color="purple" />
           </View>
         )}
       </ScrollView>

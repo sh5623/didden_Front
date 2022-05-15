@@ -1,21 +1,13 @@
 import 'react-native-gesture-handler';
 import React, {useState} from 'react';
 import {useRoute} from '@react-navigation/native';
-import {
-  View,
-  Button,
-  Modal,
-  Image,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  Alert,
-} from 'react-native';
-import Flower from '../image/LDW_0695.jpg';
+import {View, Button, Modal, Image, StyleSheet, TouchableWithoutFeedback, Alert} from 'react-native';
+import Flower from '../../image/LDW_0695.jpg';
 
 function ModalComponent() {
   const [modal, setModal] = useState(false);
 
-  handleModal = () => {
+  const handleModal = () => {
     setModal(modal ? false : true);
   };
 

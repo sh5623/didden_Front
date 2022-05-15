@@ -1,14 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  StyleSheet,
-  Button,
-  ActivityIndicator,
-  ScrollView,
-  Alert,
-} from 'react-native';
+import {View, StyleSheet, Button, ActivityIndicator, ScrollView, Alert} from 'react-native';
 import {useSelector} from 'react-redux';
-import {selectTokenAcc} from './store/tokenReducer';
+import {selectTokenAcc} from '../store/tokenReducer';
 import TourList from './tourlist';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
@@ -28,16 +21,13 @@ function GeneratorTour() {
     }
   }, []);
 
-  onAddTours = async () => {
+  const onAddTours = async () => {
     setActivityLoading(true);
     await axios
       .get(`http://146.56.155.91:8080/tour/api/info`)
       .then(response => {
         if (response.data.data === undefined) {
-          Alert.alert(
-            'didden',
-            '데이터 정보를 불러오는중 오류가 발생했습니다.',
-          );
+          Alert.alert('didden', '데이터 정보를 불러오는중 오류가 발생했습니다.');
           return;
         }
         if (tourNum > 9) {
@@ -77,12 +67,7 @@ function GeneratorTour() {
         }}
       />
       <View style={{zIndex: 1}}>
-        <ActivityIndicator
-          style={styles.loading}
-          animating={activityLoading}
-          size="large"
-          color="purple"
-        />
+        <ActivityIndicator style={styles.loading} animating={activityLoading} size="large" color="purple" />
       </View>
       <ScrollView style={{width: '100%'}}>
         <TourList tours={tours} />

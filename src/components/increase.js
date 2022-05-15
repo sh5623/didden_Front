@@ -1,20 +1,14 @@
 import React, {useRef} from 'react';
 import {View, Button, Text, TextInput, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  increment,
-  decrement,
-  incrementByAmount,
-  setByAmount,
-  selectCount,
-} from './store/counterReducer';
+import {increment, decrement, incrementByAmount, setByAmount, selectCount} from '../store/counterReducer';
 
 function Increase() {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
   const inputNums = useRef();
 
-  onChangeCount = event => {
+  const onChangeCount = event => {
     let newText = '';
     let numbers = '0123456789';
 

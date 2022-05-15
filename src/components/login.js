@@ -1,15 +1,8 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Button,
-  StyleSheet,
-  TextInput,
-  Alert,
-  ActivityIndicator,
-} from 'react-native';
+import {View, Button, StyleSheet, TextInput, Alert, ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
-import {setTokenAcc, setTokenRef, setLoginId} from './store/tokenReducer';
+import {setTokenAcc, setTokenRef, setLoginId} from '../store/tokenReducer';
 import axios from 'axios';
 
 function Login() {
@@ -19,14 +12,14 @@ function Login() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  onChangeLoginId = event => {
+  const onChangeLoginId = event => {
     setInputLoginId(event);
   };
-  onChangeLoginPwd = event => {
+  const onChangeLoginPwd = event => {
     setInputLoginPwd(event);
   };
 
-  onLogin = async () => {
+  const onLogin = async () => {
     if (inputLoginId === '') {
       Alert.alert('didden', 'ID를 입력해 주세요!');
       return;
@@ -46,8 +39,7 @@ function Login() {
       .then(res => {
         setActivityLoading(false);
         if (res.data.result === true) {
-          axios.defaults.headers.common['Authorization'] =
-            'Bearer ' + res.data.token_acc;
+          axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.token_acc;
           dispatch(setLoginId(inputLoginId));
           dispatch(setTokenAcc(res.data.token_acc));
           dispatch(setTokenRef(res.data.token_ref));
@@ -89,12 +81,7 @@ function Login() {
       </View>
 
       <View>
-        <ActivityIndicator
-          style={styles.loading}
-          animating={activityLoading}
-          size="large"
-          color="purple"
-        />
+        <ActivityIndicator style={styles.loading} animating={activityLoading} size="large" color="purple" />
       </View>
 
       <Button title="Login" onPress={this.onLogin} />

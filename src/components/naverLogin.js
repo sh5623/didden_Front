@@ -1,16 +1,8 @@
 import React from 'react';
 import {Button, Alert, Platform, TouchableOpacity} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  setNaverTokenAcc,
-  setNaverTokenRef,
-  setNaverUserEmail,
-  selectNaverTokenAcc,
-} from './store/tokenReducer';
-import {
-  NaverLogin,
-  getProfile as NaverProfile,
-} from '@react-native-seoul/naver-login';
+import {setNaverTokenAcc, setNaverTokenRef, setNaverUserEmail, selectNaverTokenAcc} from '../store/tokenReducer';
+import {NaverLogin, getProfile as NaverProfile} from '@react-native-seoul/naver-login';
 import styled from 'styled-components/native';
 
 function NaverLoginComponents() {
@@ -32,7 +24,7 @@ function NaverLoginComponents() {
   const initials = Platform.OS === 'ios' ? iosKeys : androidKeys;
   const naverAccessToken = useSelector(selectNaverTokenAcc);
 
-  naverLogin = props => {
+  const naverLogin = props => {
     return new Promise((resolve, reject) => {
       NaverLogin.login(props, (err, token) => {
         if (err) {
@@ -51,22 +43,18 @@ function NaverLoginComponents() {
     });
   };
 
-  getNaverProfile = async () => {
+  const getNaverProfile = async () => {
     const profileResult = await NaverProfile(naverAccessToken);
     if (profileResult.resultcode === '024') {
       Alert.alert('로그인 실패', profileResult.message);
       return;
     }
 
-    dispatch(
-      setNaverUserEmail(
-        JSON.stringify(profileResult.response.email).replace(/\"/g, ''),
-      ),
-    );
+    dispatch(setNaverUserEmail(JSON.stringify(profileResult.response.email).replace(/\"/g, '')));
     Alert.alert('profileResult', JSON.stringify(profileResult));
   };
 
-  naverLogout = () => {
+  const naverLogout = () => {
     const logoutResult = NaverLogin.logout();
     Alert.alert('로그아웃', '성공적으로 로그아웃 되었습니다.');
 
@@ -77,7 +65,7 @@ function NaverLoginComponents() {
   return (
     <ContainerView>
       <TouchableOpacity onPress={() => naverLogin(initials)}>
-        <LoginImage source={require('../image/btnG_small.png')} />
+        <LoginImage source={require('../../image/btnG_small.png')} />
       </TouchableOpacity>
       <Button title="NaverLogout" onPress={naverLogout} />
       <Button title="NaverProfile" onPress={getNaverProfile} />
