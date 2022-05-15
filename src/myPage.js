@@ -1,7 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import {selectLoginId, selectKakaoUserEmail, selectNaverUserEmail} from './store/tokenReducer';
-import {useSelector} from 'react-redux';
+import {
+  selectLoginId,
+  selectKakaoUserEmail,
+  selectNaverUserEmail,
+  setInit,
+} from './store/tokenReducer';
+import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
 function MyPage() {
@@ -10,23 +15,42 @@ function MyPage() {
   const naverUserEmail = useSelector(selectNaverUserEmail);
 
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const [myPageLoginId, setMyPageLoginId] = useState('');
   const [scrapCount, setScrapCount] = useState(0);
 
-  const myPageCheckId = () => {
+  myPageCheckId = () => {
     if (loginId) {
       setMyPageLoginId(loginId);
     } else if (kakaoUserEmail) {
       setMyPageLoginId(kakaoUserEmail);
     } else if (naverUserEmail) {
       setMyPageLoginId(naverUserEmail);
+    } else {
+      setMyPageLoginId('');
+    }
+  };
+
+  loginStatusCheck = () => {
+    if (!loginId) {
+      alert('로그인이 필요합니다.');
+      return;
+    } else {
+      navigation.navigate('userCheck');
+    }
+  };
+
+  logout = () => {
+    if (myPageLoginId) {
+      alert('로그아웃 되었습니다.');
+      dispatch(setInit());
     }
   };
 
   useEffect(() => {
     myPageCheckId();
-  }, []);
+  });
 
   return (
     <View style={styles.myPageMainContainer}>
@@ -47,17 +71,23 @@ function MyPage() {
         <TouchableOpacity
           style={styles.myPageMainListText}
           onPress={() => {
-            navigation.navigate('userCheck');
+            loginStatusCheck();
           }}>
           <Text>회원정보</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.myPageMainListText}>
           <Text>설정</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.myPageMainListText}>
+        <TouchableOpacity
+          style={styles.myPageMainListText}
+          onPress={() => {
+            logout();
+          }}>
           <Text>로그아웃</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.myPageMainListText}>
+        <TouchableOpacity
+          style={styles.myPageMainListText}
+          onPress={() => navigation.navigate('announcement')}>
           <Text>공지사항</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.myPageMainListText}>

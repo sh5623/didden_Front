@@ -14,6 +14,17 @@ export const tokenSlice = createSlice({
     naver_user_email: '',
   },
   reducers: {
+    setInit: state => {
+      state.login_id = '';
+      state.token_acc = '';
+      state.token_ref = '';
+      state.kakao_token_acc = '';
+      state.kakao_token_ref = '';
+      state.kakao_user_email = '';
+      state.naver_token_acc = '';
+      state.naver_token_ref = '';
+      state.naver_user_email = '';
+    },
     setLoginId: (state, action) => {
       state.login_id = action.payload;
     },
@@ -45,6 +56,7 @@ export const tokenSlice = createSlice({
 });
 
 export const {
+  setInit,
   setLoginId,
   setTokenAcc,
   setTokenRef,
