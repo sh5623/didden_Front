@@ -3,6 +3,7 @@ import * as KakaoLogins from '@react-native-seoul/kakao-login';
 import {View, Button, Alert, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {setKakaoTokenAcc, setKakaoTokenRef, setKakaoUserEmail} from '../store/tokenReducer';
+import axios from 'axios';
 
 function KakaoLogin() {
   const dispatch = useDispatch();
@@ -11,12 +12,29 @@ function KakaoLogin() {
   const kakaoLogin = () => {
     KakaoLogins.login()
       .then(result => {
+        let kakaoParam = {};
         Alert.alert('didden', JSON.stringify(result));
         dispatch(setKakaoTokenAcc(JSON.stringify(result.accessToken).replace(/\"/g, '')));
         dispatch(setKakaoTokenRef(JSON.stringify(result.refreshToken).replace(/\"/g, '')));
 
+        const loginParam = result;
+
         KakaoLogins.getProfile().then(result => {
           dispatch(setKakaoUserEmail(JSON.stringify(result.email).replace(/\"/g, '')));
+
+          kakaoParam = Object.assign(loginParam, result);
+
+          // 소셜 로인 param 전달
+          axios
+            .post(`http://146.56.155.91:8080/user/api/social/login`, {
+              loginParam: kakaoParam,
+            })
+            .then(response => {
+              console.log(response);
+            })
+            .catch(error => {
+              console.log(error.message);
+            });
         });
       })
       .catch(error => {
