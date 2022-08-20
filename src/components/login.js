@@ -32,8 +32,8 @@ function Login() {
     setActivityLoading(true);
 
     await axios
-      .post(`http://146.56.155.91:8080/user/login`, {
-        userId: inputLoginId,
+      .post(`http://146.56.155.91:8080/login`, {
+        userEmail: inputLoginId,
         userPassword: inputLoginPwd,
       })
       .then(res => {
@@ -53,6 +53,7 @@ function Login() {
       .catch(error => {
         setActivityLoading(false);
         alert(error.message);
+        console.log(error.response);
       });
   };
 
@@ -62,7 +63,7 @@ function Login() {
         <TextInput
           value={inputLoginId}
           style={styles.input}
-          onChangeText={this.onChangeLoginId}
+          onChangeText={onChangeLoginId}
           autoCapitalize={'none'}
           placeholder={'ID'}
           autoFocus={true}
@@ -73,7 +74,7 @@ function Login() {
         <TextInput
           value={inputLoginPwd}
           style={styles.input}
-          onChangeText={this.onChangeLoginPwd}
+          onChangeText={onChangeLoginPwd}
           autoCapitalize={'none'}
           placeholder={'Password'}
           secureTextEntry={true}
@@ -84,7 +85,7 @@ function Login() {
         <ActivityIndicator style={styles.loading} animating={activityLoading} size="large" color="purple" />
       </View>
 
-      <Button title="Login" onPress={this.onLogin} />
+      <Button title="Login" onPress={onLogin} />
     </View>
   );
 }
