@@ -38,17 +38,13 @@ function Login() {
       })
       .then(res => {
         setActivityLoading(false);
-        if (res.data.result === true) {
-          axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.token_acc;
-          dispatch(setLoginId(inputLoginId));
-          dispatch(setTokenAcc(res.data.token_acc));
-          dispatch(setTokenRef(res.data.token_ref));
-          setTimeout(() => {
-            navigation.navigate('home');
-          }, 500);
-        } else {
-          Alert.alert('didden', res.data.error);
-        }
+        axios.defaults.headers.common['Authorization'] = res.headers.authorization;
+        dispatch(setLoginId(inputLoginId));
+        dispatch(setTokenAcc(res.headers.authorization));
+        dispatch(setTokenRef(res.data.token_ref));
+        setTimeout(() => {
+          navigation.navigate('home');
+        }, 500);
       })
       .catch(error => {
         setActivityLoading(false);
