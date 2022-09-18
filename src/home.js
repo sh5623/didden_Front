@@ -18,8 +18,8 @@ function Home() {
   }, []);
 
   const getMainImage = async () => {
-    const data = await ImageApi.getImageList();
-    if (data.status === 200) {
+    const {data} = await ImageApi.getImageList();
+    if (data.status === 'OK') {
       setMainImages(data.data);
       setLoadingMainImage(true);
     } else {
@@ -40,7 +40,7 @@ function Home() {
         {loadingMainImages ? (
           <SliderBox
             images={mainImages.map(mainImage => {
-              return mainImage.contentUrl;
+              return mainImage.contentImageUri;
             })}
             autoplay={true} // 자동 슬라이드 넘김
             sliderBoxHeight={500}
