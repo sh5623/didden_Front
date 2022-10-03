@@ -1,10 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Alert, Text} from 'react-native';
-import {
-  selectKakaoUserEmail,
-  selectLoginId,
-  selectNaverUserEmail,
-} from './store/tokenReducer';
+import {selectKakaoUserEmail, selectLoginId, selectNaverUserEmail} from './store/tokenReducer';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import styled from 'styled-components/native';
@@ -50,10 +46,7 @@ function UserCheck() {
       })
       .then(response => {
         if (response.data === undefined) {
-          Alert.alert(
-            'didden',
-            '데이터 정보를 불러오는중 오류가 발생했습니다.',
-          );
+          Alert.alert('didden', '데이터 정보를 불러오는중 오류가 발생했습니다.');
           return;
         } else {
           if (response.data.result) {
@@ -144,8 +137,7 @@ const Button = styled.TouchableOpacity`
   padding: 5px;
   border-radius: 5px;
   border: 1px solid black;
-  background-color: ${props =>
-    props.backgroudColor ? props.backgroudColor : 'yellow'};
+  background-color: ${props => (props.backgroudColor ? props.backgroudColor : 'yellow')};
 `;
 
 // const HoverButton = styled(Button)`

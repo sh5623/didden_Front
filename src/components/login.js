@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {View, Button, StyleSheet, TextInput, Alert, ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
-import {setTokenAcc, setTokenRef, setLoginId} from '../store/tokenReducer';
-import axios from 'axios';
+import {setTokenAcc, setLoginId} from '../store/tokenReducer';
+import {DiddenAxiosInstance} from '../service/api/axios-instance/DiddenAxiosInstance';
+import {LoginApi} from '../service/api/didden/LoginApi';
 
 function Login() {
   const [inputLoginId, setInputLoginId] = useState('');
@@ -20,40 +21,30 @@ function Login() {
   };
 
   const onLogin = async () => {
-    if (inputLoginId === '') {
+    if (!inputLoginId) {
       Alert.alert('didden', 'ID를 입력해 주세요!');
       return;
     }
-    if (inputLoginPwd === '') {
+    if (!inputLoginPwd) {
       Alert.alert('didden', 'Password를 입력해 주세요!');
       return;
     }
 
     setActivityLoading(true);
 
-    await axios
-      .post(`http://146.56.155.91:8080/user/login`, {
-        userId: inputLoginId,
-        userPassword: inputLoginPwd,
-      })
-      .then(res => {
-        setActivityLoading(false);
-        if (res.data.result === true) {
-          axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.token_acc;
-          dispatch(setLoginId(inputLoginId));
-          dispatch(setTokenAcc(res.data.token_acc));
-          dispatch(setTokenRef(res.data.token_ref));
-          setTimeout(() => {
-            navigation.navigate('home');
-          }, 500);
-        } else {
-          Alert.alert('didden', res.data.error);
-        }
-      })
-      .catch(error => {
-        setActivityLoading(false);
-        alert(error.message);
-      });
+    const data = await LoginApi.postRequestLogin(inputLoginId, inputLoginPwd);
+    if (data.status === 200) {
+      DiddenAxiosInstance.defaults.headers.common['Authorization'] = data.headers.authorization;
+      dispatch(setLoginId(inputLoginId));
+      dispatch(setTokenAcc(data.headers.authorization));
+
+      setTimeout(() => {
+        navigation.navigate('home');
+      }, 500);
+    } else {
+      Alert.alert('didden', '오류가 발생했습니다. 잠시 후  다시 시도해 주세요.');
+      setActivityLoading(false);
+    }
   };
 
   return (
@@ -62,7 +53,7 @@ function Login() {
         <TextInput
           value={inputLoginId}
           style={styles.input}
-          onChangeText={this.onChangeLoginId}
+          onChangeText={onChangeLoginId}
           autoCapitalize={'none'}
           placeholder={'ID'}
           autoFocus={true}
@@ -73,7 +64,7 @@ function Login() {
         <TextInput
           value={inputLoginPwd}
           style={styles.input}
-          onChangeText={this.onChangeLoginPwd}
+          onChangeText={onChangeLoginPwd}
           autoCapitalize={'none'}
           placeholder={'Password'}
           secureTextEntry={true}
@@ -84,7 +75,7 @@ function Login() {
         <ActivityIndicator style={styles.loading} animating={activityLoading} size="large" color="purple" />
       </View>
 
-      <Button title="Login" onPress={this.onLogin} />
+      <Button title="Login" onPress={onLogin} />
     </View>
   );
 }
