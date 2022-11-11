@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {View, Button, StyleSheet, TextInput, Alert, ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
-import {setTokenAcc, setTokenRef, setLoginId} from '../store/tokenReducer';
-import axios from 'axios';
+import {setTokenAcc, setLoginId} from '../store/tokenReducer';
+import {DiddenAxiosInstance} from '../service/api/axios-instance/DiddenAxiosInstance';
+import {LoginApi} from '../service/api/didden/LoginApi';
 
 function Login() {
   const [inputLoginId, setInputLoginId] = useState('');
@@ -20,37 +21,30 @@ function Login() {
   };
 
   const onLogin = async () => {
-    if (inputLoginId === '') {
+    if (!inputLoginId) {
       Alert.alert('didden', 'ID를 입력해 주세요!');
       return;
     }
-    if (inputLoginPwd === '') {
+    if (!inputLoginPwd) {
       Alert.alert('didden', 'Password를 입력해 주세요!');
       return;
     }
 
     setActivityLoading(true);
 
-    await axios
-      .post(`http://146.56.155.91:8080/login`, {
-        userEmail: inputLoginId,
-        userPassword: inputLoginPwd,
-      })
-      .then(res => {
-        setActivityLoading(false);
-        axios.defaults.headers.common['Authorization'] = res.headers.authorization;
-        dispatch(setLoginId(inputLoginId));
-        dispatch(setTokenAcc(res.headers.authorization));
-        dispatch(setTokenRef(res.data.token_ref));
-        setTimeout(() => {
-          navigation.navigate('home');
-        }, 500);
-      })
-      .catch(error => {
-        setActivityLoading(false);
-        alert(error.message);
-        console.log(error.response);
-      });
+    const data = await LoginApi.postRequestLogin(inputLoginId, inputLoginPwd);
+    if (data.status === 200) {
+      DiddenAxiosInstance.defaults.headers.common['Authorization'] = data.headers.authorization;
+      dispatch(setLoginId(inputLoginId));
+      dispatch(setTokenAcc(data.headers.authorization));
+
+      setTimeout(() => {
+        navigation.navigate('home');
+      }, 500);
+    } else {
+      Alert.alert('didden', '오류가 발생했습니다. 잠시 후  다시 시도해 주세요.');
+      setActivityLoading(false);
+    }
   };
 
   return (

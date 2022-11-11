@@ -12,7 +12,7 @@ function Generator() {
 
   const onNumDelete = position => {
     const newArray = random.filter((num, index) => {
-      return position != index;
+      return position !== index;
     });
 
     setRandom(newArray);
@@ -23,11 +23,11 @@ function Generator() {
       <Button
         title="Add Number"
         onPress={() => {
-          this.onAddRandomNum();
+          onAddRandomNum();
         }}
       />
       <ScrollView style={{width: '100%'}} bounces={true}>
-        <NumList nums={random} deleteFn={this.onNumDelete} />
+        <NumList nums={random} deleteFn={onNumDelete} />
       </ScrollView>
     </View>
   );

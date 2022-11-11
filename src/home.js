@@ -4,13 +4,12 @@ import {View, Button, StyleSheet, Alert, ScrollView} from 'react-native';
 import {useSelector} from 'react-redux';
 import {selectTokenAcc} from './store/tokenReducer';
 import Header from '../src/header';
-import axios from 'axios';
 import {SliderBox} from 'react-native-image-slider-box';
+import {ImageApi} from './service/api/didden/ImageApi';
 
 function Home() {
   const tokenAcc = useSelector(selectTokenAcc);
   const navigation = useNavigation();
-  const appName = '.didden';
   const [mainImages, setMainImages] = useState([]);
   const [loadingMainImages, setLoadingMainImage] = useState(false);
 
@@ -19,18 +18,13 @@ function Home() {
   }, []);
 
   const getMainImage = async () => {
-    await axios
-      .get(`http://146.56.155.91:8080/main/content/images`)
-      .then(response => {
-        if (response.data) {
-          setMainImages(response.data);
-          setLoadingMainImage(true);
-        }
-      })
-      .catch(error => {
-        Alert.alert('didden', `이미지 로드에 실패했습니다. ${error.message}`);
-        setLoadingMainImage(false);
-      });
+    const {data} = await ImageApi.getImageList();
+    if (data.status === 'OK') {
+      setMainImages(data.data);
+      setLoadingMainImage(true);
+    } else {
+      setLoadingMainImage(false);
+    }
   };
 
   return (
@@ -46,7 +40,7 @@ function Home() {
         {loadingMainImages ? (
           <SliderBox
             images={mainImages.map(mainImage => {
-              return mainImage.contentUrl;
+              return mainImage.contentImageUri;
             })}
             autoplay={true} // 자동 슬라이드 넘김
             sliderBoxHeight={500}

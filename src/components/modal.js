@@ -16,7 +16,7 @@ function ModalComponent() {
 
   return (
     <View style={{width: '100%', alignItems: 'center'}}>
-      <Button title="Open Modal" onPress={this.handleModal} />
+      <Button title="Open Modal" onPress={handleModal} />
 
       <Modal visible={modal} animationType="slide">
         <View style={{marginTop: 60}}>
@@ -33,7 +33,7 @@ function ModalComponent() {
           </TouchableWithoutFeedback>
         </View>
 
-        <Button title="Go Back" onPress={this.handleModal} />
+        <Button title="Go Back" onPress={handleModal} />
       </Modal>
     </View>
   );
