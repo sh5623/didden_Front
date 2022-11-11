@@ -15,11 +15,13 @@ import ImagePicker from './components/imagePicker';
 import Animation from './components/animation';
 import Increase from './components/increase';
 import Login from './components/login';
+import Signup from './components/signup';
 import LogoComponent from './logo';
 import KakaoLogin from './components/kakaoLogin';
 import NaverLogin from './components/naverLogin';
 import GoogleMap from './components/googleMap';
 import Components from './components';
+import Announcement from './announcement';
 
 const Stack = createNativeStackNavigator();
 
@@ -63,11 +65,13 @@ function HomeStack() {
       <Stack.Screen name="imagePicker" component={ImagePicker} />
       <Stack.Screen name="animation" component={Animation} />
       <Stack.Screen name="login" component={Login} />
+      <Stack.Screen name='signUp' component={Signup} />
       <Stack.Screen name="increase" component={Increase} />
       <Stack.Screen name="kakaoLogin" component={KakaoLogin} />
       <Stack.Screen name="naverLogin" component={NaverLogin} />
       <Stack.Screen name="googleMap" component={GoogleMap} />
       <Stack.Screen name="components" component={Components} />
+      <Stack.Screen name="announcement" component={Announcement} />
     </Stack.Navigator>
   );
 }
