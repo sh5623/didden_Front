@@ -25,7 +25,7 @@ function PickerComponent() {
         value={value}
         minimumValue={0}
         maximumValue={100}
-        onValueChange={this.sliderValueChange}
+        onValueChange={sliderValueChange}
         step={1}
       />
       <Text style={styles.input}>{value}</Text>
