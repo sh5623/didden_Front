@@ -92,17 +92,13 @@ function Signup() {
         await axios
         .post(`http://146.56.155.91:8080/user`, {
             userEmail: inputCreateEmail,
-            userName: '',
             userPassword: inputCreatePwd,
             userNickname: inputCreateName,
             userBirthday: inputBirthday.replace('-', ''),
             userGender: gender,
             userPhoneNumber: inputCreatePhoneNumber,
-            userCreateDate: '',
-            userUpdateDate: '',
-            userPrivacyConsent: 'Y',
-            userSocialLoginType: '',
-            userRefreshToken: ''
+            userPrivacyConsent: 'AGREED',
+            userLoginType: 'default'
         })
         .then(res => {
             if(res.data.status === 'CREATED') {
@@ -139,8 +135,9 @@ function Signup() {
     // 인증번호 발송
     onAuthNumSend = async () => {
         await axios
-        .get(`http://146.56.155.91:8080/mail`, {    
-            params: {to:inputCreateEmail, from:'tnsqja012@test.com'}
+        .post(`http://146.56.155.91:8080/mail/send`, {    
+            to : inputCreateEmail, 
+            from : 'tnsqja012@test.com'
         })
         .then(res => {
             Alert.alert('didden',res.data.message);
@@ -156,8 +153,9 @@ function Signup() {
     // 인증
     onAuth = async () => {
       await axios
-      .get(`http://146.56.155.91:8080/certification`, {
-          params: {userEmail:inputCreateEmail, code:inputAuthNum}
+      .post(`http://146.56.155.91:8080/mail/certification`, {
+        userEmail : inputCreateEmail,
+        code : inputAuthNum
       })
       .then(res => {
           Alert.alert('didden',res.data.message);
@@ -242,14 +240,14 @@ function Signup() {
             />
             <View style={styles.buttonContainHorizontal}>
                 <TouchableOpacity
-                    style={gender == 'M' ? styles.buttonSelect : styles.buttonNonSelect}
-                    onPress={()=>setGender('M')}>
-                    <Text style={gender == 'M' ? styles.buttonTextSelect : styles.buttonTextNonSelect}>{('남자')}</Text>
+                    style={gender == 'MALE' ? styles.buttonSelect : styles.buttonNonSelect}
+                    onPress={()=>setGender('MALE')}>
+                    <Text style={gender == 'MALE' ? styles.buttonTextSelect : styles.buttonTextNonSelect}>{('남자')}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={gender == 'F' ? styles.buttonSelect : styles.buttonNonSelect}
-                    onPress={()=>setGender('F')}>
-                    <Text style={gender == 'F' ? styles.buttonTextSelect : styles.buttonTextNonSelect}>{('여자')}</Text>
+                    style={gender == 'FEMALE' ? styles.buttonSelect : styles.buttonNonSelect}
+                    onPress={()=>setGender('FEMALE')}>
+                    <Text style={gender == 'FEMALE' ? styles.buttonTextSelect : styles.buttonTextNonSelect}>{('여자')}</Text>
                 </TouchableOpacity>
             </View>
             <TextInput 
