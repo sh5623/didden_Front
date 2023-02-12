@@ -28,7 +28,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>kakao</string>
-				<string>56ee23c294e5fc4b797eee23c2d4effb</string>
+				<string>b9add2ce7d287021975d1a84bdbb7c9e</string>
 			</array>
 		</dict>
 		<dict>
@@ -43,7 +43,7 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>KAKAO_APP_KEY</key>
-	<string>56ee23c294e5fc4b797eee23c2d4effb</string>
+	<string>b9add2ce7d287021975d1a84bdbb7c9e</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakaokompassauth</string>

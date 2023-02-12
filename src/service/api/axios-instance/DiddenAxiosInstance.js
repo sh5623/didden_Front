@@ -1,9 +1,9 @@
 import axios from 'axios';
 import deepTrim from 'deep-trim';
-import {API_URL} from '@env';
+import Config from 'react-native-config';
 
 export const DiddenAxiosInstance = axios.create({
-  baseURL: `${API_URL}`,
+  baseURL: Config.API_URL,
   timeout: 1000 * 10,
 });
 

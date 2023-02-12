@@ -14,6 +14,12 @@ function Home() {
     <View style={styles.home}>
       <Header tokenAcc={tokenAcc} />
       <Button
+        title="Card Component"
+        onPress={() => {
+          navigation.navigate('card');
+        }}
+      />
+      <Button
         title="Go Login"
         onPress={() => {
           navigation.navigate('login');

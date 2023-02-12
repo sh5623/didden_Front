@@ -20,6 +20,7 @@ import LogoComponent from './logo';
 import KakaoLogin from './components/kakaoLogin';
 import NaverLogin from './components/naverLogin';
 import GoogleMap from './components/googleMap';
+import Card from './components/card';
 import Components from './components';
 import Announcement from './announcement';
 
@@ -70,6 +71,7 @@ function HomeStack() {
       <Stack.Screen name="kakaoLogin" component={KakaoLogin} />
       <Stack.Screen name="naverLogin" component={NaverLogin} />
       <Stack.Screen name="googleMap" component={GoogleMap} />
+      <Stack.Screen name="card" component={Card} />
       <Stack.Screen name="components" component={Components} />
       <Stack.Screen name="announcement" component={Announcement} />
     </Stack.Navigator>
