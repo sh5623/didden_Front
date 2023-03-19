@@ -10,6 +10,7 @@ import {
   ActivityIndicator,
   StyleSheet,
 } from 'react-native';
+import BadgeComponent from './badge';
 
 function CardComponent() {
   const [imageList, setImageList] = useState([]);
@@ -41,10 +42,36 @@ function CardComponent() {
               }}
               key={image.galContentId}>
               <View style={styles.card}>
-                <Image source={{uri: image.firstImage}} style={styles.image} resizeMode="cover" key={image.contentId} />
-                <Text style={styles.imageTitle}>{image.title}</Text>
-                <Text style={styles.badge}>{image.highCodeName}</Text>
-                <Text style={styles.badge}>{image.middleCodeName}</Text>
+                <View style={styles.cardLeft}>
+                  <Image
+                    source={{uri: image.firstImage}}
+                    style={styles.image}
+                    resizeMode="cover"
+                    key={image.contentId}
+                  />
+                </View>
+                <View style={styles.cardRight}>
+                  <Text style={styles.area}>
+                    {image.areaName} {image.sigunuName}
+                  </Text>
+                  <Text style={styles.imageTitle}>{image.title}</Text>
+                  <View style={styles.badgeArea}>
+                    <BadgeComponent
+                      style={styles.badge}
+                      color={'#f07e06'}
+                      backgroundColor={'#ffff7c'}
+                      contain={image.highCodeName.split('_')[0]}
+                      key={image.highCodeName}
+                    />
+                    <BadgeComponent
+                      style={styles.badge}
+                      color={'#006600'}
+                      backgroundColor={'#6cc570'}
+                      contain={image.middleCodeName}
+                      key={image.middleCodeName}
+                    />
+                  </View>
+                </View>
               </View>
             </TouchableWithoutFeedback>
           ))
@@ -65,7 +92,7 @@ const styles = StyleSheet.create({
   },
   card: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
     width: 350,
     height: 180,
     backgroundColor: 'white',
@@ -77,20 +104,43 @@ const styles = StyleSheet.create({
     borderColor: '#edebeb',
     borderRadius: 10,
   },
+  cardLeft: {
+    flex: 1,
+    marginTop: 15,
+    marginLeft: 20,
+    maxWidth: 150,
+    maxHeight: 150,
+  },
   image: {
-    width: 150,
-    height: 150,
+    width: '100%',
+    height: '100%',
     borderColor: 'white',
     borderWidth: 1,
     borderRadius: 10,
     justifyContent: 'center',
-    marginTop: 15,
-    marginLeft: 20,
+  },
+  cardRight: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+
+    marginLeft: 15,
+  },
+  area: {
+    marginTop: 20,
+    color: 'grey',
+    fontSize: 12,
   },
   imageTitle: {
-    position: 'relative',
-    left: 200,
-    top: -145,
+    marginTop: 10,
+    fontSize: 16,
+    fontWeight: '500',
+  },
+  badgeArea: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: 'auto',
+    marginBottom: 15,
   },
   loading: {
     position: 'absolute',
